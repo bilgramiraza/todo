@@ -27,6 +27,12 @@ class TodoItem{
     toggleDone(){
         this._done = !this.done; 
     }
+    changePriority(value){
+        this._priority = value;
+    }
+    changeDisc(value){
+        this._description = value;
+    }
 }
 
 class ToDoList{
@@ -84,6 +90,30 @@ class ToDoList{
         targetProject.tasks[targetIndex].toggleDone();
     }
 
+    changePriority(project, taskTitle, newPriority){
+        const targetProject = this.#locateProject(project);
+        if(targetProject === -1)
+            return;
+        const targetIndex = targetProject.tasks.findIndex(item => item.title === taskTitle);
+        if(targetIndex === -1){
+            alert('Title Not Found')
+            return;
+        }
+        targetProject.tasks[targetIndex].changePriority(newPriority);
+    }
+
+    changeDisc(project, taskTitle, newDisc){
+        const targetProject = this.#locateProject(project);
+        if(targetProject === -1)
+            return;
+        const targetIndex = targetProject.tasks.findIndex(item => item.title === taskTitle);
+        if(targetIndex === -1){
+            alert('Title Not Found')
+            return;
+        }
+        targetProject.tasks[targetIndex].changeDisc(newDisc);
+    }
+
     removeItem(project, value){
         const targetProject = this.#locateProject(project);
         if(targetProject === -1)
@@ -114,7 +144,7 @@ class ToDoList{
     #locateProject(value){
         const targetProject = this.todoList.find(item=> item.project === value);
         if(typeof(targetProject) === 'undefined'){
-            alert(`${project} Doesn't Exist. Cancelling Operation`);
+            alert(`${value} Doesn't Exist. Cancelling Operation`);
             return -1;
         }
         return targetProject;
