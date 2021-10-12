@@ -92,10 +92,10 @@ class ToDoList{
                 targetProject.tasks[targetIndex].toggleDone();
                 break;
             case "Priority":
-                targetProject.tasks[targetIndex].changePriority(newPriority);
+                targetProject.tasks[targetIndex].changePriority(value);
                 break;
             case "Discription":
-                targetProject.tasks[targetIndex].changeDisc(newDisc);
+                targetProject.tasks[targetIndex].changeDisc(value);
                 break;
         }
     }
