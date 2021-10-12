@@ -24,12 +24,16 @@ class TodoItem{
     get display(){
        return [this._title, this._dueDate.toISOString().substring(0,10), this._priority, this._done, this._description];
     }
+    toggleDone(){
+        this._done = !this.done; 
+    }
 }
 
 class ToDoList{
     constructor(){
         this.todoList = [];
     }
+
     newTodoProject(value){
         const duplicateCheck = this.todoList.findIndex(item => item.project === value);
         if(duplicateCheck > -1){
@@ -40,12 +44,12 @@ class ToDoList{
                             "tasks": []};
         this.todoList.push(newProject);
     }
+
     newTodoItem(project, valueArray){
-        const targetProject = this.todoList.find(item=> item.project === project);
-        if(typeof(targetProject) === 'undefined'){
-            alert(`${project} Doesn't Exist. Cancelling Operation`);
+        const targetProject = this.#locateProject(project);
+        if(targetProject === -1)
             return;
-        }
+        
         const duplicateCheck = targetProject.tasks.findIndex(item => item.title === valueArray[0]);
         if(duplicateCheck > -1){
             alert(`'${valueArray[0]}' Already Exists. Cancelling Operation`);
@@ -53,15 +57,38 @@ class ToDoList{
         }
         targetProject.tasks.push(new TodoItem(...valueArray));
     }
+
     getAllProjects(){
-        return this.todoList;
+        const projectTitles = this.todoList.map(item => item.project);
+        return projectTitles;
     }
-    removeItem(project, value){
-        const targetProject = this.todoList.find(item=> item.project === project);
-        if(typeof(targetProject) === 'undefined'){
-            alert(`${project} Doesn't Exist. Cancelling Operation`);
+
+    getAllTasks(project){
+        const targetProject = this.#locateProject(project);
+        if(targetProject === -1)
+            return;
+        
+        const projectTasks = targetProject.tasks.map(item => item.display);
+        return projectTasks;
+    }
+
+    toggleDone(project, taskTitle){
+        const targetProject = this.#locateProject(project);
+        if(targetProject === -1)
+            return;
+        const targetIndex = targetProject.tasks.findIndex(item => item.title === taskTitle);
+        if(targetIndex === -1){
+            alert('Title Not Found')
             return;
         }
+        targetProject.tasks[targetIndex].toggleDone();
+    }
+
+    removeItem(project, value){
+        const targetProject = this.#locateProject(project);
+        if(targetProject === -1)
+            return;
+        
         const targetIndex = targetProject.tasks.findIndex(item => item.title === value);
         if(targetIndex === -1){
             alert('Title Not Found')
@@ -69,6 +96,7 @@ class ToDoList{
         }
         targetProject.tasks.splice(targetIndex,1);
     }
+
     removeProject(value){
         const targetProjectIndex = this.todoList.findIndex(item=> item.project === value);
         if(targetProjectIndex === -1){
@@ -81,6 +109,15 @@ class ToDoList{
                 return;
         }    
         this.todoList.splice(targetProjectIndex,1);
+    }
+
+    #locateProject(value){
+        const targetProject = this.todoList.find(item=> item.project === value);
+        if(typeof(targetProject) === 'undefined'){
+            alert(`${project} Doesn't Exist. Cancelling Operation`);
+            return -1;
+        }
+        return targetProject;
     }
 }
 
