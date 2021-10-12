@@ -78,7 +78,7 @@ class ToDoList{
         return projectTasks;
     }
 
-    toggleDone(project, taskTitle){
+    changeTaskDetails(project, taskTitle, targetProperty, value = null){
         const targetProject = this.#locateProject(project);
         if(targetProject === -1)
             return;
@@ -87,31 +87,17 @@ class ToDoList{
             alert('Title Not Found')
             return;
         }
-        targetProject.tasks[targetIndex].toggleDone();
-    }
-
-    changePriority(project, taskTitle, newPriority){
-        const targetProject = this.#locateProject(project);
-        if(targetProject === -1)
-            return;
-        const targetIndex = targetProject.tasks.findIndex(item => item.title === taskTitle);
-        if(targetIndex === -1){
-            alert('Title Not Found')
-            return;
+        switch (targetProperty) {
+            case "Done":
+                targetProject.tasks[targetIndex].toggleDone();
+                break;
+            case "Priority":
+                targetProject.tasks[targetIndex].changePriority(newPriority);
+                break;
+            case "Discription":
+                targetProject.tasks[targetIndex].changeDisc(newDisc);
+                break;
         }
-        targetProject.tasks[targetIndex].changePriority(newPriority);
-    }
-
-    changeDisc(project, taskTitle, newDisc){
-        const targetProject = this.#locateProject(project);
-        if(targetProject === -1)
-            return;
-        const targetIndex = targetProject.tasks.findIndex(item => item.title === taskTitle);
-        if(targetIndex === -1){
-            alert('Title Not Found')
-            return;
-        }
-        targetProject.tasks[targetIndex].changeDisc(newDisc);
     }
 
     removeItem(project, value){

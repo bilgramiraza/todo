@@ -51,7 +51,7 @@ toggleDoneBtn.textContent = 'Toggle Done';
 toggleDoneBtn.addEventListener('click', ()=>{
     const project = prompt('Enter Project Title');
     const targetTitle = prompt('Enter Title of item');
-    todoList.toggleDone(project, targetTitle);
+    todoList.changeTaskDetails(project, targetTitle, "Done");
 });
 
 const changePriorityBtn = document.createElement('button');
@@ -60,7 +60,7 @@ changePriorityBtn.addEventListener('click', ()=>{
     const project = prompt('Enter Project Title');
     const targetTitle = prompt('Enter Title of item');
     const newPriority = Number(prompt('Enter the New Priority Number: '));
-    todoList.changePriority(project, targetTitle, newPriority);
+    todoList.changeTaskDetails(project, targetTitle, "Priority", newPriority);
 });
 
 const changeDiscBtn = document.createElement('button');
@@ -69,7 +69,7 @@ changeDiscBtn.addEventListener('click', ()=>{
     const project = prompt('Enter Project Title');
     const targetTitle = prompt('Enter Title of item');
     const newDisc = prompt('Enter the New Description: ');
-    todoList.changeDisc(project, targetTitle, newDisc);
+    todoList.changeTaskDetails(project, targetTitle, "Discription", newDisc);
 });
 
 const removeItemBtn = document.createElement('button');
