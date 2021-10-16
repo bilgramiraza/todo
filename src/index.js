@@ -1,7 +1,7 @@
 import './reset.css';
 import './style.css';
 import ToDoList from './todoFactory';
-import DomHandler from "./display.js";
+import basePageBuilder from "./display.js";
 console.log('START');
 
 let todoList = new ToDoList();
@@ -124,4 +124,4 @@ todoList.newTodoItem("Third", ["Third", "2010-03-02", 3, false, "Iprem"]);
 // by.textContent = "Made By S.M. Raza Hassan Bilgami";
 // footer.appendChild(by);
 
-DomHandler();
+basePageBuilder();
