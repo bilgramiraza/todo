@@ -11,6 +11,7 @@ const DOMObject =
 */
 
 function DOMBuilder(DOMObject, parentNode=null) {
+    console.log(DOMBuilder.className);
         const element = document.createElement(DOMObject.element);
         if(DOMObject.className)
             element.classList.add(...DOMObject.className);
@@ -26,7 +27,7 @@ function DOMBuilder(DOMObject, parentNode=null) {
             element.setAttribute("rows", DOMObject.rows);
         if(DOMObject.type)
             element.setAttribute("type", DOMObject.type);
-
+        
         if(DOMObject.childNodes)
         DOMObject.childNodes.forEach((object)=>{
                 DOMBuilder(object, element);
@@ -39,5 +40,8 @@ function DOMBuilder(DOMObject, parentNode=null) {
             document.body.appendChild(element);
 }
 
+// const DOMSelector = {
+//     addProject : document.querySelector('.')
+// };
 
 export default DOMBuilder;

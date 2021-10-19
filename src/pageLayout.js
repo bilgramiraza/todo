@@ -1,3 +1,7 @@
+const pageTitle = {
+  element: "h1",
+  textContent: "TODO TRACKING",
+};
 const addProjectBtn = {
   element: "button",
   textContent: "Add Project",
@@ -6,9 +10,14 @@ const displayProjectBtn = {
   element: "button",
   textContent: "Display Project",
 };
+const headerBtns ={
+  element: "div",
+  className: ["headerBtnGroup"],
+  childNodes:[addProjectBtn,displayProjectBtn]
+};
 const header = {
   element: "header",
-  childNodes: [addProjectBtn, displayProjectBtn],
+  childNodes: [pageTitle, headerBtns],
 };
 
 const addTaskBtn = {
@@ -23,10 +32,25 @@ const removeProjectBtn = {
   element: "button",
   textContent: "Remove Project",
 };
+const menuBarBtns = {
+  element: "div",
+  className: ["menuBarBtns"],
+  childNodes: [addTaskBtn, displayTaskBtn, removeProjectBtn],
+};
+const dummyProject = {
+  element: "div",
+  className: ["project"],
+  textContent: "Mock Project",
+};
+const menuItemsGroup ={
+  element: "div",
+  className: ["projectList"],
+  childNodes: [dummyProject],
+};
 const menuBar = {
   element: "div",
   className: ["menuBar"],
-  childNodes: [addTaskBtn, displayTaskBtn, removeProjectBtn],
+  childNodes: [menuBarBtns, menuItemsGroup],
 };
 
 const toggleDoneBtn = {
@@ -45,15 +69,34 @@ const removeItemBtn = {
   element: "button",
   textContent: "Remove Item",
 };
-const contentBody = {
+const projectTitleBar = {
   element: "div",
-  className: ["content"],
-  childNodes: [
+  className: ["projectTitleBar"],
+};
+const dummyTask = {
+  element: "div",
+  className: ["task"],
+  textContent: "Mock Task",
+};
+const taskGrid = {
+  element: "div",
+  className: ["taskGrid"],
+  childNodes: [dummyTask],
+};
+const taskDisplay = {
+  element: "div",
+  className: ["taskDisplay"],
+  childNodes:[
     toggleDoneBtn,
     changePriorityBtn,
     changeDiscriptionBtn,
     removeItemBtn,
   ],
+};
+const contentBody = {
+  element: "div",
+  className: ["content"],
+  childNodes: [projectTitleBar, taskGrid, taskDisplay],
 };
 const main = {
   element: "main",
@@ -62,14 +105,14 @@ const main = {
 
 const submitBtn = {
   element: "button",
+  className: ["Submit"],
   type: "button",
-  class: ["submit"],
   textContent: "Submit",
 };
 const cancelBtn = {
   element: "button",
+  className: ["Cancel"],
   type: "button",
-  class: ["cancel"],
   textContent: "Cancel",
 };
 const submitCancel = {
@@ -145,16 +188,17 @@ const todoDoneLabel = {
   for: ["done"],
   textContent: "Done",
 };
-const todoDoneInput = {
-  element: "input",
-  type: "checkbox",
-  id: "done",
-};
+const todoDoneCheckbox = {
+    element: "input",
+    type: "checkbox",
+    id: "done",
+  };
 const todoItemDoneItem = {
   element: "div",
   className: ["form-item"],
-  childNodes: [todoDoneLabel, todoDoneInput],
+  childNodes: [todoDoneLabel, todoDoneCheckbox], 
 };
+
 const todoItemFormGroup = {
   element: "div",
   className: ["form-group"],
@@ -167,8 +211,7 @@ const todoItemFormGroup = {
   ],
 };
 const itemModalTitle = {
-  element: "h2",
-  className: ["modalTitle"],
+  element: "legend",
   textContent: "New Todo Item",
 };
 const itemModalBox = {
@@ -203,8 +246,7 @@ const projectFormGroup = {
   childNodes: [projectFormItem],
 };
 const projectModalTitle = {
-  element: "h2",
-  className: ["modalTitle"],
+  element: "legend",
   textContent: "New Project",
 };
 const projectModalBox = {
