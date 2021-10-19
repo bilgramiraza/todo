@@ -40,8 +40,4 @@ function DOMBuilder(DOMObject, parentNode=null) {
             document.body.appendChild(element);
 }
 
-// const DOMSelector = {
-//     addProject : document.querySelector('.')
-// };
-
 export default DOMBuilder;
