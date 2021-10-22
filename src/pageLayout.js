@@ -1,41 +1,43 @@
+import { ta } from "date-fns/locale";
+
 const pageTitle = {
   element: "h1",
   textContent: "TODO TRACKING",
 };
+const header = {
+  element: "header",
+  childNodes: [pageTitle],
+};
+
 const addProjectBtn = {
   element: "button",
+  className: ["addProjectBtn"],
   textContent: "Add Project",
 };
 const displayProjectBtn = {
   element: "button",
+  className: ["displayProjectBtn"],
   textContent: "Display Project",
 };
-const headerBtns ={
-  element: "div",
-  className: ["headerBtnGroup"],
-  childNodes:[addProjectBtn,displayProjectBtn]
-};
-const header = {
-  element: "header",
-  childNodes: [pageTitle, headerBtns],
-};
-
 const addTaskBtn = {
   element: "button",
+  className: ["addTaskBtn"],
   textContent: "Add Task",
 };
 const displayTaskBtn = {
   element: "button",
+  className: ["displayTaskBtn"],
   textContent: "Display Tasks",
 };
 const removeProjectBtn = {
   element: "button",
+  className: ["removeProjectBtn"],
   textContent: "Remove Project",
 };
 const menuBarBtns = {
   element: "div",
   className: ["menuBarBtns"],
-  childNodes: [addTaskBtn, displayTaskBtn, removeProjectBtn],
+  childNodes: [addProjectBtn, displayProjectBtn, addTaskBtn, displayTaskBtn, removeProjectBtn],
 };
 const dummyProject = {
   element: "div",
@@ -55,23 +57,32 @@ const menuBar = {
 
 const toggleDoneBtn = {
   element: "button",
+  className: ["toggleDoneBtn"],
   textContent: "Toggle Done",
 };
 const changePriorityBtn = {
   element: "button",
+  className: ["changePriorityBtn"],
   textContent: "Change Priority",
 };
 const changeDiscriptionBtn = {
   element: "button",
+  className: ["changeDiscBtn"],
   textContent: "Change Discription",
 };
 const removeItemBtn = {
   element: "button",
+  className: ["removeTaskBtn"],
   textContent: "Remove Item",
 };
+// toggleDoneBtn,
+// changePriorityBtn,
+// changeDiscriptionBtn,
+// removeItemBtn,
 const projectTitleBar = {
   element: "div",
   className: ["projectTitleBar"],
+  textContent: "Mock Project",
 };
 const dummyTask = {
   element: "div",
@@ -83,15 +94,55 @@ const taskGrid = {
   className: ["taskGrid"],
   childNodes: [dummyTask],
 };
+const displayTaskTitle = {
+  element: "div",
+  className: ["displayTaskTitle"],
+  textContent: "Mock Task",
+};
+const taskDescriptionBox = {
+  element: "div",
+  className: ["taskDescriptionBox"],
+  textContent: "Mock Task Discription",
+};
+const taskDescriptionCheckbox = {
+  element: "div",
+  className: ["taskDescriptionCheckbox"],
+  textContent: "Mock Task CheckBoxes",
+}; 
+const displayTaskDescription = {
+  element: "div",
+  className: ["displayTaskDescription"],
+  childNodes: [taskDescriptionBox, taskDescriptionCheckbox],
+};
+const displayDueDate = {
+  element: "div",
+  className: ["displayDueDate"],
+  textContent: "Mock Task Due Date",
+};
+const displayPriority = {
+  element: "div",
+  className: ["displayPriority"],
+  textContent: "Mock Task Priority",
+};
+const displayTaskStats = {
+  element: "div",
+  className: ["displayTaskStats"],
+  childNodes: [displayDueDate, displayPriority, removeItemBtn],
+};
+const displayTaskDetails = {
+  element: "div",
+  className: ["displayTaskDetails"],
+  childNodes: [displayTaskDescription, displayTaskStats],
+};
+const displayDone = {
+  element: "div",
+  className: ["displayDone"],
+  textContent: "Mock Task Done Status btn",
+};
 const taskDisplay = {
   element: "div",
   className: ["taskDisplay"],
-  childNodes:[
-    toggleDoneBtn,
-    changePriorityBtn,
-    changeDiscriptionBtn,
-    removeItemBtn,
-  ],
+  childNodes:[displayTaskTitle, displayTaskDetails, displayDone],
 };
 const contentBody = {
   element: "div",
