@@ -11,7 +11,6 @@ const DOMObject =
 */
 
 function DOMBuilder(DOMObject, parentNode=null) {
-    console.log(DOMBuilder.className);
         const element = document.createElement(DOMObject.element);
         if(DOMObject.className)
             element.classList.add(...DOMObject.className);
