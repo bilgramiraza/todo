@@ -75,7 +75,6 @@ const removeItemBtn = {
   className: ["removeTaskBtn"],
   textContent: "Remove Item",
 };
-// toggleDoneBtn,
 // changePriorityBtn,
 // changeDiscriptionBtn,
 // removeItemBtn,
@@ -134,15 +133,10 @@ const displayTaskDetails = {
   className: ["displayTaskDetails"],
   childNodes: [displayTaskDescription, displayTaskStats],
 };
-const displayDone = {
-  element: "div",
-  className: ["displayDone"],
-  textContent: "Mock Task Done Status btn",
-};
 const taskDisplay = {
   element: "div",
   className: ["taskDisplay"],
-  childNodes:[displayTaskTitle, displayTaskDetails, displayDone],
+  childNodes:[displayTaskTitle, displayTaskDetails, toggleDoneBtn],
 };
 const contentBody = {
   element: "div",
@@ -267,13 +261,8 @@ const itemModalTitle = {
 };
 const itemModalBox = {
   element: "fieldset",
-  className: ["modalBox"],
+  className: ["itemFormModal","modalBox","hide"],
   childNodes: [itemModalTitle, todoItemFormGroup, submitCancel],
-};
-const itemFormModal = {
-  element: "form",
-  className: ["cover", "hide"],
-  childNodes: [itemModalBox],
 };
 const projectTitleLabel = {
   element: "label",
@@ -302,14 +291,15 @@ const projectModalTitle = {
 };
 const projectModalBox = {
   element: "fieldset",
-  className: ["modalBox"],
+  className: ["projectFormModal", "modalBox", "hide"],
   childNodes: [projectModalTitle, projectFormGroup, submitCancel],
 };
-const projectFormModal = {
+const formModal = {
   element: "form",
   className: ["cover", "hide"],
-  childNodes: [projectModalBox],
+  childNodes: [itemModalBox, projectModalBox],
 };
+
 const footerText = {
   element: "p",
   textContent: "Made By S.M. Raza Hassan Bilgami",
@@ -319,6 +309,6 @@ const footer = {
   childNodes: [footerText],
 };
 
-const pageLayout = [header, main, itemFormModal, projectFormModal, footer];
+const pageLayout = [header, main, formModal, footer];
 
 export default pageLayout;
