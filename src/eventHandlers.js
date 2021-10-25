@@ -1,20 +1,20 @@
 function eventHandlers(todoList, DirForm, DirDisplay) {
     document.body.addEventListener("click",(event)=>{
-        console.log(event.target.className);
-        console.log(DirForm);
-        console.log(DirDisplay);
+        console.log(event.currentTarget);
         switch (event.target.className) {
             case "addProjectBtn":
-                openForm(event.target.className, DirDisplay);
+                DirDisplay.formModal.classList.toggle("hide");
+                DirDisplay.projectForm.classList.toggle("hide");
                 break;
             case "addTaskBtn":
-                openForm(event.target.className, DirDisplay);
+                DirDisplay.formModal.classList.toggle("hide");
+                DirDisplay.taskForm.classList.toggle("hide");
                 break;
             case "displayProjectBtn":
                 console.log(todoList.getAllProjects());
                 break;
             case "displayTaskBtn":
-                console.log(todoList.getAllTasks("Main"));
+                console.log(todoList.getAllTasks("Mock Project"));
                 break;
             case "removeProjectBtn":
                 console.log("removeProjectBtn");
@@ -25,12 +25,31 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
             case "toggleDoneBtn":
                 console.log("toggleDoneBtn");
                 break;
+            case "project":
+                DirForm.currentProject.textContent = event.target.textContent;
+                break;
+            case "task":
+                console.log("task");
+                break;
             case "Submit":
+                console.log(event.target.parentNode.parentNode.className);
+                switch (event.target.parentNode.parentNode.className) {
+                    case "projectFormModal modalBox":    
+                        projectFormInput(DirForm,todoList);
+                        break;
+                
+                    case "itemFormModal modalBox":
+                        taskFormInput(DirForm,todoList);
+                        break;
+                }
+                clearFormModal(DirDisplay);
+                break;                
             case "Cancel":
-                DirDisplay.formModal.classList.toggle("hide");
                 DirDisplay.formModal.reset();
-                DirDisplay.projectForm.classList.toggle("hide",true);
-                DirDisplay.taskForm.classList.toggle("hide",true);
+                clearFormModal(DirDisplay);
+                break;
+            default:
+                console.log(event.target);
                 break;
         }
     });
@@ -38,14 +57,22 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
 
 export default eventHandlers;
 
-function openForm(formName, DirDisplay) {
+function clearFormModal(DirDisplay) {
     DirDisplay.formModal.classList.toggle("hide");
-    switch (formName) {
-        case "addProjectBtn":
-            DirDisplay.projectForm.classList.toggle("hide");
-            break;
-        case "addTaskBtn":
-            DirDisplay.taskForm.classList.toggle("hide");
-            break;
-    }
+    DirDisplay.projectForm.classList.toggle("hide",true);
+    DirDisplay.taskForm.classList.toggle("hide",true);
+}
+
+function projectFormInput(dirForm, todoList) {
+    todoList.newTodoProject(dirForm.project.value);
+}
+
+function taskFormInput(dirForm, todoList) {
+    let project = dirForm.currentProject.textContent;
+    let valueArray = [dirForm.taskTitle.value,
+                      dirForm.taskDueDate.value,
+                      dirForm.taskPriority.value,
+                      dirForm.taskDone.checked,
+                      dirForm.taskDiscription.value];
+    todoList.newTodoItem(project, valueArray);
 }

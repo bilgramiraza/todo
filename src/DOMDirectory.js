@@ -1,6 +1,7 @@
 const DirectoryForm = ()=>{
     return {
         project: document.querySelector("#project"),
+        currentProject: document.querySelector(".projectTitleBar"),
         taskTitle: document.querySelector("#title"),
         taskDiscription: document.querySelector("#discription"),
         taskDueDate: document.querySelector("#due-date"),
