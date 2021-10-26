@@ -18,12 +18,6 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
             case "displayTaskBtn":
                 console.log(todoList.getAllTasks("Mock Project"));
                 break;
-            case "removeProjectBtn":
-                console.log("removeProjectBtn");
-                break;
-            case "removeTaskBtn":
-                console.log("removeTaskBtn");
-                break;
             case "toggleDoneBtn":
                 console.log("toggleDoneBtn");
                 break;
@@ -33,6 +27,15 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 break;
             case "task":
                 displayTask(todoList, DirForm.currentProject.textContent, event.target.textContent);
+                break;
+            case "removeProjectBtn":
+                const projectTitle = DirForm.currentProject.textContent;
+                todoList.removeProject(projectTitle);
+                break;
+            case "removeTaskBtn":
+                const targetProjectTitle = DirForm.currentProject.textContent;
+                const taskTitle = DirForm.currentTask.textContent;
+                todoList.removeItem(targetProjectTitle,taskTitle);
                 break;
             case "Submit":
                 console.log(event.target.parentNode.parentNode.className);
