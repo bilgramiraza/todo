@@ -1,7 +1,7 @@
 import './reset.css';
 import './style.css';
 import loadProjects from './loadProjects';
-import basePageBuilder from "./display.js";
+import {basePageBuilder, buildProjects} from "./display";
 import { DirectoryForm, DirectoryDisplay } from './DOMDirectory';
 import eventHandlers from './eventHandlers';
 
@@ -15,7 +15,7 @@ let todoList = loadProjects();
 const DirForm = DirectoryForm();
 const DirDisplay = DirectoryDisplay();
 eventHandlers(todoList,DirForm,DirDisplay);
-
+buildProjects(todoList);
 
 /*
 1)Build the Page

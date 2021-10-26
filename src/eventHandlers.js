@@ -1,6 +1,8 @@
+import {buildTasks, displayTask} from './display';
+
 function eventHandlers(todoList, DirForm, DirDisplay) {
     document.body.addEventListener("click",(event)=>{
-        console.log(event.currentTarget);
+        // console.log(event.currentTarget);
         switch (event.target.className) {
             case "addProjectBtn":
                 DirDisplay.formModal.classList.toggle("hide");
@@ -27,9 +29,10 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 break;
             case "project":
                 DirForm.currentProject.textContent = event.target.textContent;
+                buildTasks(todoList, event.target.textContent);
                 break;
             case "task":
-                console.log("task");
+                displayTask(todoList, DirForm.currentProject.textContent, event.target.textContent);
                 break;
             case "Submit":
                 console.log(event.target.parentNode.parentNode.className);
@@ -48,9 +51,9 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 DirDisplay.formModal.reset();
                 clearFormModal(DirDisplay);
                 break;
-            default:
-                console.log(event.target);
-                break;
+            // default:
+            //     console.log(event.target);
+            //     break;
         }
     });
 }   
