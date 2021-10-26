@@ -14,6 +14,11 @@ const DirectoryDisplay = ()=>{
         formModal: document.querySelector("form"),
         taskForm: document.querySelector(".itemFormModal"),
         projectForm: document.querySelector(".projectFormModal"),
+        taskTitle: document.querySelector(".displayTaskTitle"),
+        taskDiscription: document.querySelector(".taskDescriptionBox"),
+        taskDueDate: document.querySelector(".displayDueDate"),
+        taskPriority: document.querySelector(".displayPriority"),
+        taskDone: document.querySelector(".toggleDoneBtn"),
     };
 };
 export {DirectoryForm, DirectoryDisplay};
