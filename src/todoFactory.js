@@ -69,6 +69,15 @@ class ToDoList{
         return projectTitles;
     }
 
+    getAllTaskTitles(project){
+        const targetProject = this.#locateProject(project);
+        if(targetProject === -1)
+            return;
+        
+        const projectTaskTitles = targetProject.tasks.map(item => item.title);
+        return projectTaskTitles;
+    }
+
     getAllTasks(project){
         const targetProject = this.#locateProject(project);
         if(targetProject === -1)
