@@ -39,15 +39,9 @@ const menuBarBtns = {
   className: ["menuBarBtns"],
   childNodes: [addProjectBtn, displayProjectBtn, addTaskBtn, displayTaskBtn, removeProjectBtn],
 };
-const dummyProject = {
-  element: "div",
-  className: ["project"],
-  textContent: "Mock Project",
-};
 const menuItemsGroup ={
   element: "div",
   className: ["projectList"],
-  childNodes: [dummyProject],
 };
 const menuBar = {
   element: "div",
@@ -83,15 +77,9 @@ const projectTitleBar = {
   className: ["projectTitleBar"],
   textContent: "Mock Project",
 };
-const dummyTask = {
-  element: "div",
-  className: ["task"],
-  textContent: "Mock Task",
-};
 const taskGrid = {
   element: "div",
   className: ["taskGrid"],
-  childNodes: [dummyTask],
 };
 const displayTaskTitle = {
   element: "div",
