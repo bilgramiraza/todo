@@ -1,5 +1,3 @@
-import { ta } from "date-fns/locale";
-
 const pageTitle = {
   element: "h1",
   textContent: "TODO TRACKING",
@@ -34,10 +32,20 @@ const removeProjectBtn = {
   className: ["removeProjectBtn"],
   textContent: "Remove Project",
 };
+const editProjectBtn = {
+  element: "button",
+  className: ["editProjectBtn"],
+  textContent: "Edit Project",
+};
 const menuBarBtns = {
   element: "div",
   className: ["menuBarBtns"],
-  childNodes: [addProjectBtn, displayProjectBtn, addTaskBtn, displayTaskBtn, removeProjectBtn],
+  childNodes: [addProjectBtn,
+               displayProjectBtn,
+               addTaskBtn,
+               displayTaskBtn,
+               removeProjectBtn,
+               editProjectBtn],
 };
 const menuItemsGroup ={
   element: "div",
@@ -54,24 +62,11 @@ const toggleDoneBtn = {
   className: ["toggleDoneBtn"],
   textContent: "Toggle Done",
 };
-const changePriorityBtn = {
-  element: "button",
-  className: ["changePriorityBtn"],
-  textContent: "Change Priority",
-};
-const changeDiscriptionBtn = {
-  element: "button",
-  className: ["changeDiscBtn"],
-  textContent: "Change Discription",
-};
 const removeItemBtn = {
   element: "button",
   className: ["removeTaskBtn"],
-  textContent: "Remove Item",
+  textContent: "Remove Task",
 };
-// changePriorityBtn,
-// changeDiscriptionBtn,
-// removeItemBtn,
 const projectTitleBar = {
   element: "div",
   className: ["projectTitleBar"],
@@ -101,6 +96,11 @@ const displayTaskDescription = {
   className: ["displayTaskDescription"],
   childNodes: [taskDescriptionBox, taskDescriptionCheckbox],
 };
+const editTaskBtn = {
+  element: "button",
+  className: ["editTaskFormBtn"],
+  textContent: "Edit Task",
+};
 const displayDueDate = {
   element: "div",
   className: ["displayDueDate"],
@@ -114,7 +114,7 @@ const displayPriority = {
 const displayTaskStats = {
   element: "div",
   className: ["displayTaskStats"],
-  childNodes: [displayDueDate, displayPriority, removeItemBtn],
+  childNodes: [editTaskBtn, displayDueDate, displayPriority, removeItemBtn],
 };
 const displayTaskDetails = {
   element: "div",
@@ -245,7 +245,6 @@ const todoItemFormGroup = {
 };
 const itemModalTitle = {
   element: "legend",
-  textContent: "New Todo Item",
 };
 const itemModalBox = {
   element: "fieldset",
@@ -275,7 +274,6 @@ const projectFormGroup = {
 };
 const projectModalTitle = {
   element: "legend",
-  textContent: "New Project",
 };
 const projectModalBox = {
   element: "fieldset",

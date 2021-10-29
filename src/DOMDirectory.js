@@ -13,6 +13,8 @@ const DirectoryForm = ()=>{
 const DirectoryDisplay = ()=>{
     return {
         formModal: document.querySelector("form"),
+        projectLegend: document.querySelector(".projectFormModal>legend"),
+        taskLegend: document.querySelector(".itemFormModal>legend"),
         taskForm: document.querySelector(".itemFormModal"),
         projectForm: document.querySelector(".projectFormModal"),
         taskTitle: document.querySelector(".displayTaskTitle"),
