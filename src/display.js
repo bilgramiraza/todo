@@ -10,8 +10,10 @@ const basePageBuilder = ()=> {
 
 }
 const buildProjects = (todoList)=>{
-    const projectTitles = todoList.getAllProjects();
+    const projectTitles = todoList.getAllProjectTitles();
     const projectList = document.querySelector(".projectList");
+    if(projectList.children)
+        clearPanel(projectList);
     projectTitles.forEach((title)=>{
         const Project = {
             element: "div",
@@ -22,9 +24,11 @@ const buildProjects = (todoList)=>{
     });
 };
 
-const buildTasks = (todoList, projectTitle)=>{
-    const taskTitles = todoList.getAllTaskTitles(projectTitle);
-    const taskList = document.querySelector(".taskGrid");
+const buildTasks = (todoList)=>{
+    const taskTitles = todoList.getAllTaskTitles();
+    const taskList = document.querySelector(".taskGrid");    
+    if(taskList.children)
+        clearPanel(taskList);
     //TODO: Error Handling
     //TODO: Sorting tasks by priority before displaying
     taskTitles.forEach((title)=>{
@@ -37,14 +41,19 @@ const buildTasks = (todoList, projectTitle)=>{
     });
 };
 
-const displayTask = (todoList, projectTitle, taskTitle)=>{
+const displayTask = (todoList)=>{
     const DirDisplay = DirectoryDisplay();
-    const task = todoList.getTask(projectTitle, taskTitle);
+    const task = todoList.getCurrentTask();
     DirDisplay.taskTitle.textContent = task[0];
     DirDisplay.taskDiscription.textContent = task[4];
     DirDisplay.taskDueDate.textContent = task[1];
     DirDisplay.taskPriority.textContent = task[2];
     DirDisplay.taskDone.textContent = task[3];
+}
+function clearPanel(parentNode) {
+    while(parentNode.firstChild){
+        parentNode.removeChild(parentNode.lastChild);
+    }
 }
 
 export {basePageBuilder, buildProjects, buildTasks, displayTask};
@@ -54,35 +63,3 @@ export {basePageBuilder, buildProjects, buildTasks, displayTask};
 //     const targetTitle = prompt('Enter Title of item');
 //     todoList.changeTaskDetails(project, targetTitle, "Done");
 // });
-
-
-// changePriorityBtn.addEventListener('click', ()=>{
-//     const project = prompt('Enter Project Title');
-//     const targetTitle = prompt('Enter Title of item');
-//     const newPriority = Number(prompt('Enter the New Priority Number: '));
-//     todoList.changeTaskDetails(project, targetTitle, "Priority", newPriority);
-// });
-
-
-// changeDiscBtn.addEventListener('click', ()=>{
-//     const project = prompt('Enter Project Title');
-//     const targetTitle = prompt('Enter Title of item');
-//     const newDisc = prompt('Enter the New Description: ');
-//     todoList.changeTaskDetails(project, targetTitle, "Discription", newDisc);
-// });
-
-
-// removeItemBtn.addEventListener('click', ()=>{
-//     const project = prompt('Enter Project Title');
-//     const targetTitle = prompt('Enter Title of item');
-//     todoList.removeItem(project,targetTitle);
-// });
-
-
-// removeProjectBtn.addEventListener('click', ()=>{
-//     const project = prompt('Enter Project Title');
-//     todoList.removeProject(project);
-// });
-
-
-
