@@ -57,7 +57,7 @@ class ToDoList{
         const newProject = {"project": value,
                             "tasks": []};
         this.todoList.push(newProject);
-        this.updateCurrentProjectIndex(newProject);
+        this.updateCurrentProjectIndex(newProject.project);
         return newProject;
     }
     newTodoTask(valueArray){        
@@ -67,7 +67,7 @@ class ToDoList{
         const newTask = new TodoTask(...valueArray);
 
         this.todoList[this.currentProjectIndex].tasks.push(newTask);
-        this.updateCurrentTaskIndex(newTask);
+        this.updateCurrentTaskIndex(newTask.title);
         return newTask;
     }
 
@@ -76,8 +76,8 @@ class ToDoList{
         return projectTitles;
     }
     getAllTaskTitles(){
-        const projectTasks = this.todoList[this.currentProjectIndex].tasks;
-        projectTaskTitles = projectTasks.map(task => task.title);
+        const projectTasks = this.todoList[this.currentProjectIndex];
+        const projectTaskTitles = projectTasks.tasks.map(task => task.title);
         return projectTaskTitles;
     }
     getCurrentTask(){
@@ -89,7 +89,7 @@ class ToDoList{
     removeCurrentTask(){
         const targetProject = this.todoList[this.currentProjectIndex];
         const removedTask = targetProject.tasks.splice(this.currentTaskIndex,1);
-        this.updateCurrentTaskIndex("");
+        this.updateCurrentTaskIndex(taskProject.tasks[0].title);
         return removedTask;
     }
     removeCurrentProject(){
@@ -100,7 +100,7 @@ class ToDoList{
                 return null;
         }    
         const removedProject = this.todoList.splice(this.currentProjectIndex,1);
-        this.updateCurrentProjectIndex("");
+        this.updateCurrentProjectIndex(this.todoList[0].project);
         return removedProject.project;
     }
 
@@ -126,10 +126,10 @@ class ToDoList{
     }
 
     updateCurrentProjectIndex(newProject){
-        this.currentProjectIndex = this.#locateProject(newProject.project);
+        this.currentProjectIndex = this.#locateProject(newProject);
     }
     updateCurrentTaskIndex(newTask){
-        this.currentTaskIndex = this.#locateTask(newTask.title);
+        this.currentTaskIndex = this.#locateTask(newTask);
     }
 }
 
