@@ -2,25 +2,32 @@ import {buildProjects, buildTasks, displayTask} from './display';
 
 function eventHandlers(todoList, DirForm, DirDisplay) {
     document.body.addEventListener("click",(event)=>{
+        let check = null;
         // console.log(event.currentTarget);
         switch (event.target.className) {
             case "editProjectBtn":
-                toggleProjectForm(DirDisplay);
-                DirDisplay.projectLegend.textContent = "Edit Project";
-                buildEditProjectForm(DirForm);
+                check = todoList.getCurrentProject();
+                if(check === null){
+                    console.log("No Project Selected");
+                    break;
+                }
+                toggleProjectForm(DirDisplay, "Edit Project");
+                buildEditProjectForm(DirForm, todoList);
                 break;
             case "addProjectBtn":
-                toggleProjectForm(DirDisplay);
-                DirDisplay.projectLegend.textContent = "New Project";
+                toggleProjectForm(DirDisplay, "New Project");
                 break;
             case "editTaskFormBtn":
-                toggleTaskForm(DirDisplay);
-                DirDisplay.taskLegend.textContent = "Edit Task";
+                check = todoList.getCurrentTask();
+                if(check === null){
+                    console.log("No Task Selected");
+                    break;
+                }
+                toggleTaskForm(DirDisplay, "Edit Task");
                 buildEditTaskForm(todoList, DirForm);
                 break;
             case "addTaskBtn":
-                toggleTaskForm(DirDisplay);
-                DirDisplay.taskLegend.textContent = "New Task";
+                toggleTaskForm(DirDisplay, "New Task");
                 break;
             case "displayProjectBtn":
                 console.log(todoList.getAllProjectTitles());
@@ -29,11 +36,16 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 console.log(todoList.getAllTaskTitles());
                 break;
             case "toggleDoneBtn":
-                console.log("toggleDoneBtn");
+                const result = todoList.toggleDoneCurrentTask();
+                if(result === null){
+                    console.log("No Task Selected");
+                    break;
+                }
+                event.target.textContent = result;
                 break;
             case "project":
-                DirForm.currentProject.textContent = event.target.textContent;
                 todoList.updateCurrentProjectIndex(event.target.textContent);
+                DirForm.currentProject.textContent = todoList.getCurrentProject();
                 buildTasks(todoList);
                 break;
             case "task":
@@ -41,36 +53,28 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 displayTask(todoList);
                 break;
             case "removeProjectBtn":
-                todoList.removeCurrentProject();
+                check = todoList.removeCurrentProject();
+                if(check === null){
+                    console.log("Deletion Cancelled");
+                }
+                else
                 buildProjects(todoList);
                 buildTasks(todoList);
                 break;
             case "removeTaskBtn":
-                todoList.removeCurrentTask();
-                buildTasks(todoList);
+                check = todoList.removeCurrentTask();
+                if(check === null)
+                    console.log("Deletion Cancelled");
+                else
+                    buildTasks(todoList);
                 break;
             case "Submit":
+                check = formBlank(DirForm, event.target.parentNode.parentNode.className);
+                if(check)
+                    console.log("Empty Inputs. Fill Fields to continue");
+                else
+                    submitHandling(event.target.parentNode.parentNode.className, DirForm, DirDisplay, todoList);
                 console.log(event.target.parentNode.parentNode.className);
-                switch (event.target.parentNode.parentNode.className) {
-                    case "projectFormModal modalBox":
-                        if(DirDisplay.projectLegend.textContent === "Edit Project")
-                            projectFormEdit(DirForm,todoList);
-                        else
-                            projectFormInput(DirForm,todoList);
-                        resetProjectForm(DirForm);
-                        break;
-                
-                    case "itemFormModal modalBox":
-                        if(DirDisplay.taskLegend.textContent === "Edit Task")
-                            taskFormEdit(DirForm,todoList);
-                        else
-                            taskFormInput(DirForm,todoList);
-                        resetTaskForm(DirForm);
-                        break;
-                }
-                clearFormModal(DirDisplay);
-                buildProjects(todoList);
-                buildTasks(todoList);
                 break;                
             case "Cancel":
                 DirDisplay.formModal.reset();
@@ -92,28 +96,21 @@ function clearFormModal(DirDisplay) {
     DirDisplay.projectForm.classList.toggle("hide",true);
     DirDisplay.taskForm.classList.toggle("hide",true);
 }
-function toggleProjectForm(DirDisplay) {
+
+function toggleProjectForm(DirDisplay, projectTitle) {
+    DirDisplay.projectLegend.textContent = projectTitle;
     DirDisplay.formModal.classList.toggle("hide");
     DirDisplay.projectForm.classList.toggle("hide");
 }
-function toggleTaskForm(DirDisplay) {
-    DirDisplay.formModal.classList.toggle("hide");
-    DirDisplay.taskForm.classList.toggle("hide");
-}
-function projectFormInput(dirForm, todoList) {
-    todoList.newTodoProject(dirForm.project.value);
-}
-function taskFormInput(dirForm, todoList) {
-    let valueArray = [dirForm.taskTitle.value,
-                      dirForm.taskDueDate.value,
-                      dirForm.taskPriority.value,
-                      dirForm.taskDone.checked,
-                      dirForm.taskDiscription.value];
-    todoList.newTodoTask( valueArray);
+function buildEditProjectForm(DirForm, todoList){
+    const check = todoList.getCurrentProject();
+    DirForm.project.setAttribute("value", check);
 }
 
-function buildEditProjectForm(DirForm){
-    DirForm.project.setAttribute("value", DirForm.currentProject.textContent);
+function toggleTaskForm(DirDisplay, formTitle) {
+    DirDisplay.taskLegend.textContent = formTitle;
+    DirDisplay.formModal.classList.toggle("hide");
+    DirDisplay.taskForm.classList.toggle("hide");
 }
 function buildEditTaskForm(todoList, DirForm){
     const task =todoList.getCurrentTask();
@@ -123,6 +120,67 @@ function buildEditTaskForm(todoList, DirForm){
     DirForm.taskDone.checked =task[3];
     DirForm.taskDiscription.value = task[4];
 }
+
+function submitHandling(modalBoxClassName, DirForm, DirDisplay, todoList) {
+    switch (modalBoxClassName) {
+        case "projectFormModal modalBox":
+            projectFormHandling(DirDisplay, DirForm, todoList);
+            break;
+    
+        case "itemFormModal modalBox":
+            taskFormHandling(DirDisplay, DirForm, todoList);
+            displayTask(todoList);
+            break;
+    }
+    clearFormModal(DirDisplay);
+    buildProjects(todoList);
+    buildTasks(todoList);
+}
+function projectFormHandling(DirDisplay, DirForm, todoList) {
+    if(DirDisplay.projectLegend.textContent === "Edit Project")
+        projectFormEdit(DirForm,todoList);
+    else
+        projectFormInput(DirForm,todoList);
+    resetProjectForm(DirForm);
+}
+function taskFormHandling(DirDisplay, DirForm, todoList) {
+    if(DirDisplay.taskLegend.textContent === "Edit Task")
+        taskFormEdit(DirForm,todoList);
+    else
+        taskFormInput(DirForm,todoList);
+    resetTaskForm(DirForm);
+}
+
+function projectFormInput(dirForm, todoList) {
+    const check = todoList.newTodoProject(dirForm.project.value);
+    if(check === null)
+        console.log(`'${dirForm.project.value}' Already Exists. Cancelling Operation`);
+}
+function taskFormInput(dirForm, todoList) {
+    let valueArray = [dirForm.taskTitle.value,
+                      dirForm.taskDueDate.value,
+                      dirForm.taskPriority.value,
+                      dirForm.taskDone.checked,
+                      dirForm.taskDiscription.value];
+    const check = todoList.newTodoTask( valueArray);
+    if(check === null)
+        console.log(`'${dirForm.taskTitle.value}' Already Exists. Cancelling Operation`);
+}
+
+function projectFormEdit(DirForm,todoList){
+    const error = todoList.modifyCurrentProject(DirForm.project.value);
+    if(error)
+        DirForm.currentProject.textContent = error;
+}
+function taskFormEdit(dirForm,todoList){
+    let valueArray = [dirForm.taskTitle.value,
+                      dirForm.taskDueDate.value,
+                      dirForm.taskPriority.value,
+                      dirForm.taskDone.checked,
+                      dirForm.taskDiscription.value];
+    todoList.modifyCurrentTask(valueArray);
+}
+
 function resetProjectForm(DirForm){
     DirForm.project.removeAttribute("value");
 }
@@ -133,14 +191,20 @@ function resetTaskForm(DirForm){
     DirForm.taskDone.checked = false;
     DirForm.taskDiscription.value = "";
 }
-function projectFormEdit(DirForm,todoList){
-    todoList.modifyCurrentProject(DirForm.project.value);
-}
-function taskFormEdit(dirForm,todoList){
-    let valueArray = [dirForm.taskTitle.value,
-                      dirForm.taskDueDate.value,
-                      dirForm.taskPriority.value,
-                      dirForm.taskDone.checked,
-                      dirForm.taskDiscription.value];
-    todoList.modifyCurrentTask(valueArray);
+
+function formBlank(DirForm, modalBoxClassName) {
+    switch (modalBoxClassName) {
+        case "projectFormModal modalBox":
+            if(DirForm.project.value === "")
+                return true;
+            break;
+    
+        case "itemFormModal modalBox":
+            if(DirForm.taskTitle.value === "" ||
+               DirForm.taskDueDate.value === "" ||
+               DirForm.taskPriority.value === "")
+                return true;
+            break;
+    }
+    return false;
 }

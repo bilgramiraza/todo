@@ -14,14 +14,16 @@ const buildProjects = (todoList)=>{
     const projectList = document.querySelector(".projectList");
     if(projectList.children)
         clearPanel(projectList);
-    projectTitles.forEach((title)=>{
-        const Project = {
-            element: "div",
-            className: ["project"],
-            textContent: title,
-          };
-        DOMBuilder(Project, projectList);
-    });
+    
+    if(projectTitles !== null && projectTitles.length>0)
+        projectTitles.forEach((title)=>{
+            const Project = {
+                element: "div",
+                className: ["project"],
+                textContent: title,
+            };
+            DOMBuilder(Project, projectList);
+        });
 };
 
 const buildTasks = (todoList)=>{
@@ -29,21 +31,23 @@ const buildTasks = (todoList)=>{
     const taskList = document.querySelector(".taskGrid");    
     if(taskList.children)
         clearPanel(taskList);
-    //TODO: Error Handling
     //TODO: Sorting tasks by priority before displaying
-    taskTitles.forEach((title)=>{
-        const Task = {
-            element: "div",
-            className: ["task"],
-            textContent: title,
-          };
-        DOMBuilder(Task, taskList);
-    });
+    if(taskTitles !== null && taskTitles.length>0)
+        taskTitles.forEach((title)=>{
+            const Task = {
+                element: "div",
+                className: ["task"],
+                textContent: title,
+            };
+            DOMBuilder(Task, taskList);
+        });
 };
 
 const displayTask = (todoList)=>{
     const DirDisplay = DirectoryDisplay();
     const task = todoList.getCurrentTask();
+    if(task === null)
+        task = ["Title", "Due Date", "Priority", "Task Discription", "Done Status"];
     DirDisplay.taskTitle.textContent = task[0];
     DirDisplay.taskDiscription.textContent = task[4];
     DirDisplay.taskDueDate.textContent = task[1];

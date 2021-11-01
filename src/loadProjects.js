@@ -3,8 +3,8 @@ import ToDoList from "./todoFactory";
 function loadProjects() {
 
     let todoList = new ToDoList();
-    console.log(todoList.newTodoProject('Main'));
-    console.log(todoList.newTodoTask(["One", "1997-01-07", 1, true, "Ipsum"]));
+    todoList.newTodoProject('Main');
+    todoList.newTodoTask(["One", "1997-01-07", 1, true, "Ipsum"]);
     todoList.newTodoTask(["First", "1997-01-07", 1, false, "Ipsum"]);
     
     todoList.newTodoProject('First');

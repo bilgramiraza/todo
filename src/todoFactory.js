@@ -68,7 +68,7 @@ class ToDoList{
 
         this.todoList[this.currentProjectIndex].tasks.push(newTask);
         this.updateCurrentTaskIndex(newTask.title);
-        return newTask;
+        return newTask.display;
     }
 
     getAllProjectTitles(){
@@ -76,23 +76,43 @@ class ToDoList{
         return projectTitles;
     }
     getAllTaskTitles(){
+        if(this.currentProjectIndex === -1)
+            return null;
+
         const projectTasks = this.todoList[this.currentProjectIndex];
         const projectTaskTitles = projectTasks.tasks.map(task => task.title);
         return projectTaskTitles;
     }
+    getCurrentProject(){
+        if(this.currentProjectIndex === -1)
+            return null;
+        return this.todoList[this.currentProjectIndex].project;
+    }
     getCurrentTask(){
+        if(this.currentProjectIndex === -1 || this.currentTaskIndex === -1)
+            return null;
+
         const targetProject = this.todoList[this.currentProjectIndex];
         const targetTask = targetProject.tasks[this.currentTaskIndex];
         return targetTask.display;
     }
 
     removeCurrentTask(){
+        if(this.currentProjectIndex === -1 || this.currentTaskIndex === -1)
+            return null;
+
         const targetProject = this.todoList[this.currentProjectIndex];
         const removedTask = targetProject.tasks.splice(this.currentTaskIndex,1);
-        this.updateCurrentTaskIndex(taskProject.tasks[0].title);
-        return removedTask;
+        if(targetProject.tasks.length>0)
+            this.updateCurrentTaskIndex(targetProject.tasks[0].title);
+        else
+            this.updateCurrentTaskIndex("");
+        return removedTask.display;
     }
     removeCurrentProject(){
+        if(this.currentProjectIndex === -1)
+            return null;
+        
         const targetProject = this.todoList[this.currentProjectIndex];
         if(targetProject.tasks.length){
             const confirmation = confirm("Project Has Existing Tasks. Confirm Deletion of Project");
@@ -100,25 +120,32 @@ class ToDoList{
                 return null;
         }    
         const removedProject = this.todoList.splice(this.currentProjectIndex,1);
-        this.updateCurrentProjectIndex(this.todoList[0].project);
+        if(targetProject.length>0)
+            this.updateCurrentProjectIndex(this.todoList[0].project);
+        else
+            this.updateCurrentProjectIndex("");
         return removedProject.project;
     }
 
     modifyCurrentProject(value){
-        const targetProject = this.todoList[this.currentProjectIndex];
-        if(this.#locateProject(value) === -1)
+        if(this.currentProjectIndex === -1)
             return null;
-        else{
-            targetProject.project = value;
-            return targetProject.project;
-        }
+        if(this.#locateProject(value) !== -1)
+            return null;
+        const targetProject = this.todoList[this.currentProjectIndex];
+        targetProject.project = value;
+        return targetProject.project;
     }
     modifyCurrentTask(valueArray){
+        if(this.currentProjectIndex === -1 || this.currentTaskIndex === -1)
+            return null;
         this.removeCurrentTask();
         this.newTodoTask(valueArray);
         this.updateCurrentTaskIndex(valueArray[0]);
     }
     toggleDoneCurrentTask(){
+        if(this.currentProjectIndex === -1 || this.currentTaskIndex === -1)
+            return null;
         const targetProject = this.todoList[this.currentProjectIndex];
         const targetTask = targetProject.tasks[this.currentTaskIndex];
         targetTask.toggleDone();
