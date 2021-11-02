@@ -1,0 +1,20 @@
+.ErrorHandling{
+    position: absolute;
+    top:0;
+    right: 0;
+    min-width: 10%;
+    height: 3rem;
+    padding: 0.125em;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+    border: 0.25rem solid red;
+    z-index: 99;
+}
+
+.shift{
+    display: flex;
+}
