@@ -31,14 +31,16 @@ class TodoTask{
 
 class ToDoList{
     constructor(){
-        this.todoList = [];
+        let home = {"project": "Home",
+                "tasks": []};
+        this.todoList = [home];
         this.currentTaskIndex = -1;
-        this.currentProjectIndex = -1;
+        this.currentProjectIndex = 0;
     }
 
     #locateProject(value){
-        if(this.todoList.length === 0)
-            return -1;
+        // if(this.todoList.length === 0)
+        //     return -1;
         const targetProject = this.todoList.findIndex(item=> item.project === value);
         return targetProject;
     }
@@ -78,7 +80,6 @@ class ToDoList{
     getAllTaskTitles(){
         if(this.currentProjectIndex === -1)
             return null;
-
         const projectTasks = this.todoList[this.currentProjectIndex];
         const projectTaskTitles = projectTasks.tasks.map(task => task.title);
         return projectTaskTitles;
@@ -107,12 +108,13 @@ class ToDoList{
             this.updateCurrentTaskIndex(targetProject.tasks[0].title);
         else
             this.updateCurrentTaskIndex("");
-        return removedTask.display;
+        return removedTask[0].display;
     }
     removeCurrentProject(){
         if(this.currentProjectIndex === -1)
-            return null;
-        
+            return undefined;
+        if(this.todoList[this.currentProjectIndex].project === "Home")
+            return false;
         const targetProject = this.todoList[this.currentProjectIndex];
         if(targetProject.tasks.length){
             const confirmation = confirm("Project Has Existing Tasks. Confirm Deletion of Project");
@@ -124,14 +126,16 @@ class ToDoList{
             this.updateCurrentProjectIndex(this.todoList[0].project);
         else
             this.updateCurrentProjectIndex("");
-        return removedProject.project;
+        return removedProject[0].project;
     }
 
     modifyCurrentProject(value){
         if(this.currentProjectIndex === -1)
+            return undefined;
+        else if(this.#locateProject(value) !== -1)
             return null;
-        if(this.#locateProject(value) !== -1)
-            return null;
+        else if(this.todoList[this.currentProjectIndex].project === "Home")
+            return false;
         const targetProject = this.todoList[this.currentProjectIndex];
         targetProject.project = value;
         return targetProject.project;

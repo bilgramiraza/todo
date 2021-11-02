@@ -61,9 +61,3 @@ function clearPanel(parentNode) {
 }
 
 export {basePageBuilder, buildProjects, buildTasks, displayTask};
-
-// toggleDoneBtn.addEventListener('click', ()=>{
-//     const project = prompt('Enter Project Title');
-//     const targetTitle = prompt('Enter Title of item');
-//     todoList.changeTaskDetails(project, targetTitle, "Done");
-// });

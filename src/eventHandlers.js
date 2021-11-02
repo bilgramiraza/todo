@@ -1,14 +1,15 @@
 import {buildProjects, buildTasks, displayTask} from './display';
+import {ErrorDisplay} from './errorHandling';
 
 function eventHandlers(todoList, DirForm, DirDisplay) {
     document.body.addEventListener("click",(event)=>{
         let check = null;
-        // console.log(event.currentTarget);
+        // ErrorDisplay(event.target.className);
         switch (event.target.className) {
             case "editProjectBtn":
                 check = todoList.getCurrentProject();
                 if(check === null){
-                    console.log("No Project Selected");
+                    ErrorDisplay("No Project Selected");
                     break;
                 }
                 toggleProjectForm(DirDisplay, "Edit Project");
@@ -20,7 +21,7 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
             case "editTaskFormBtn":
                 check = todoList.getCurrentTask();
                 if(check === null){
-                    console.log("No Task Selected");
+                    ErrorDisplay("No Task Selected");
                     break;
                 }
                 toggleTaskForm(DirDisplay, "Edit Task");
@@ -38,7 +39,7 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
             case "toggleDoneBtn":
                 const result = todoList.toggleDoneCurrentTask();
                 if(result === null){
-                    console.log("No Task Selected");
+                    ErrorDisplay("No Task Selected");
                     break;
                 }
                 event.target.textContent = result;
@@ -54,27 +55,30 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 break;
             case "removeProjectBtn":
                 check = todoList.removeCurrentProject();
-                if(check === null){
-                    console.log("Deletion Cancelled");
-                }
+                if(check === undefined)
+                    ErrorDisplay("Deletion Cancelled No Project Selected");
+                else if(check === null)
+                    ErrorDisplay("Deletion Cancelled");
+                else if(check === false)
+                    ErrorDisplay("Cannot Delete Home Project");
                 else
+                    ErrorDisplay(`${check} Deleted`);
                 buildProjects(todoList);
                 buildTasks(todoList);
                 break;
             case "removeTaskBtn":
                 check = todoList.removeCurrentTask();
                 if(check === null)
-                    console.log("Deletion Cancelled");
+                    ErrorDisplay("Deletion Cancelled");
                 else
                     buildTasks(todoList);
                 break;
             case "Submit":
                 check = formBlank(DirForm, event.target.parentNode.parentNode.className);
                 if(check)
-                    console.log("Empty Inputs. Fill Fields to continue");
+                    ErrorDisplay("Empty Inputs. Fill Fields to continue");
                 else
                     submitHandling(event.target.parentNode.parentNode.className, DirForm, DirDisplay, todoList);
-                console.log(event.target.parentNode.parentNode.className);
                 break;                
             case "Cancel":
                 DirDisplay.formModal.reset();
@@ -154,7 +158,7 @@ function taskFormHandling(DirDisplay, DirForm, todoList) {
 function projectFormInput(dirForm, todoList) {
     const check = todoList.newTodoProject(dirForm.project.value);
     if(check === null)
-        console.log(`'${dirForm.project.value}' Already Exists. Cancelling Operation`);
+        ErrorDisplay(`'${dirForm.project.value}' Already Exists. Cancelling Operation`);
 }
 function taskFormInput(dirForm, todoList) {
     let valueArray = [dirForm.taskTitle.value,
@@ -164,13 +168,19 @@ function taskFormInput(dirForm, todoList) {
                       dirForm.taskDiscription.value];
     const check = todoList.newTodoTask( valueArray);
     if(check === null)
-        console.log(`'${dirForm.taskTitle.value}' Already Exists. Cancelling Operation`);
+        ErrorDisplay(`'${dirForm.taskTitle.value}' Already Exists. Cancelling Operation`);
 }
 
 function projectFormEdit(DirForm,todoList){
-    const error = todoList.modifyCurrentProject(DirForm.project.value);
-    if(error)
-        DirForm.currentProject.textContent = error;
+    const check = todoList.modifyCurrentProject(DirForm.project.value);
+    if(check === undefined)
+        ErrorDisplay("No Project Selected");
+    else if(check === null)
+        ErrorDisplay("Project Not Found");
+    else if(check === false)
+        ErrorDisplay("Home Project Title Cannot Be Edited");
+    else
+        DirForm.currentProject.textContent = check;
 }
 function taskFormEdit(dirForm,todoList){
     let valueArray = [dirForm.taskTitle.value,

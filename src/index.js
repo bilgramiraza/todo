@@ -4,20 +4,17 @@ import loadProjects from './loadProjects';
 import {basePageBuilder, buildProjects, displayTask} from "./display";
 import { DirectoryForm, DirectoryDisplay } from './DOMDirectory';
 import eventHandlers from './eventHandlers';
+import {buildErrorDOM} from './errorHandling';
 
-
-console.log('START');
 
 basePageBuilder();
-
+buildErrorDOM();
 let todoList = loadProjects();
-console.table(todoList);
 const DirForm = DirectoryForm();
 const DirDisplay = DirectoryDisplay();
 eventHandlers(todoList,DirForm,DirDisplay);
 buildProjects(todoList);
 displayTask(todoList);
-
 /*
 
 TASKS:
@@ -31,9 +28,10 @@ TASKS:
     Internal Restructuring of Todo Operations       Done
         Change Current Project/Task Tracking from external to Internal
 
-    Add Error Handling Function             Active
-        Unify Error Protocol 
-        Smoother Error Display(No Alert Boxes)
+    Add Error Handling Function             Done
+        Unify Error Protocol                
+        Smoother Error Display(No Alert Boxes)  
+        Make sure 'Default' Project Cannot be deleted   
 
     Local Storage Setup
         Check If Local Storage has items 
@@ -51,7 +49,6 @@ TASKS:
         Setup Pretty buttons
         Finalize Form Layout and types(Priority Input setup)
         Add CSS for If task is complete
-        Make sure 'Default' Project Cannot be deleted
         Dark Mode Toggle
         Add Github Link
 
