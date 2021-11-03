@@ -45,7 +45,7 @@ const buildTasks = (todoList)=>{
 
 const displayTask = (todoList)=>{
     const DirDisplay = DirectoryDisplay();
-    const task = todoList.getCurrentTask();
+    let task = todoList.getCurrentTask();
     if(task === null)
         task = ["Title", "Due Date", "Priority", "Task Discription", "Done Status"];
     DirDisplay.taskTitle.textContent = task[0];
