@@ -1,6 +1,6 @@
 import './reset.css';
 import './style.css';
-import loadProjects from './loadProjects';
+import {loadProjects} from './loadProjects';
 import {basePageBuilder, buildProjects, displayTask} from "./display";
 import { DirectoryForm, DirectoryDisplay } from './DOMDirectory';
 import eventHandlers from './eventHandlers';
@@ -33,12 +33,12 @@ TASKS:
         Smoother Error Display(No Alert Boxes)  
         Make sure 'Default' Project Cannot be deleted   
 
-    Local Storage Setup
+    Local Storage Setup     Done
         Check If Local Storage has items 
             if Yes
                 load them into site
             else
-                ask user if they want to load in Dummy Data
+                ask user if they want to load in Dummy Data And save them into Storage
     
     Finalize UI
         ProjectList and taskGrid Live Update

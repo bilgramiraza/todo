@@ -1,5 +1,6 @@
 import {buildProjects, buildTasks, displayTask} from './display';
 import {ErrorDisplay} from './errorHandling';
+import {saveData} from './loadProjects';
 
 function eventHandlers(todoList, DirForm, DirDisplay) {
     document.body.addEventListener("click",(event)=>{
@@ -42,7 +43,10 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                     ErrorDisplay("No Task Selected");
                     break;
                 }
-                event.target.textContent = result;
+                else{
+                    event.target.textContent = result;
+                    saveData(todoList);
+                }
                 break;
             case "project":
                 todoList.updateCurrentProjectIndex(event.target.textContent);
@@ -61,8 +65,10 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                     ErrorDisplay("Deletion Cancelled");
                 else if(check === false)
                     ErrorDisplay("Cannot Delete Home Project");
-                else
-                    ErrorDisplay(`${check} Deleted`);
+                else{
+                    ErrorDisplay(`${check} Deleted`);                    
+                    saveData(todoList);
+                }
                 buildProjects(todoList);
                 buildTasks(todoList);
                 break;
@@ -70,8 +76,10 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 check = todoList.removeCurrentTask();
                 if(check === null)
                     ErrorDisplay("Deletion Cancelled");
-                else
+                else{
                     buildTasks(todoList);
+                    saveData(todoList);
+                }
                 break;
             case "Submit":
                 check = formBlank(DirForm, event.target.parentNode.parentNode.className);
@@ -139,6 +147,7 @@ function submitHandling(modalBoxClassName, DirForm, DirDisplay, todoList) {
     clearFormModal(DirDisplay);
     buildProjects(todoList);
     buildTasks(todoList);
+    saveData(todoList);
 }
 function projectFormHandling(DirDisplay, DirForm, todoList) {
     if(DirDisplay.projectLegend.textContent === "Edit Project")
