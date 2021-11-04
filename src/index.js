@@ -6,7 +6,6 @@ import { DirectoryForm, DirectoryDisplay } from './DOMDirectory';
 import eventHandlers from './eventHandlers';
 import {buildErrorDOM} from './errorHandling';
 
-
 basePageBuilder();
 buildErrorDOM();
 let todoList = loadProjects();
@@ -39,10 +38,13 @@ TASKS:
                 load them into site
             else
                 ask user if they want to load in Dummy Data And save them into Storage
-    
+                
+    Sorting Tasks by Date       Paused(will Progress after UI improvements)
+        Sorting Rule(Date->Priority->Done Status)
+
     Finalize UI
-        ProjectList and taskGrid Live Update
-            Adding or Deleting Projects Repaints the appropriate Windows with new lists
+        ProjectList and taskGrid Live Update        Done
+            Adding or Deleting Projects Repaints the appropriate Panels with new lists
         Select Color Scheme
         Convert from outlines to borders
         Pick Fonts
@@ -52,7 +54,6 @@ TASKS:
         Dark Mode Toggle
         Add Github Link
 
-    Sorting Tasks by Date(tie-breaker:Priority)
     
     Setup Mobile View
         Hidden Menu Bar

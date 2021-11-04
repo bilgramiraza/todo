@@ -1,3 +1,4 @@
+import {format, compareAsc} from 'date-fns';
 class TodoTask{
     constructor(title, dueDate, priority, done, description){
         this._title = title;
@@ -22,7 +23,10 @@ class TodoTask{
         return this._description;
     }
     get display(){
-       return [this._title, this._dueDate.toISOString().substring(0,10), this._priority, this._done, this._description];
+       return [this._title,format(this._dueDate, "EEEE do MMMM uuuu"), this._priority, this._done, this._description];
+    }
+    taskData(){
+        return [this._title,format(this._dueDate, "uuuu-MM-dd"), this._priority, this._done, this._description];
     }
     toggleDone(){
         this._done = !this.done; 
@@ -39,8 +43,6 @@ class ToDoList{
     }
 
     #locateProject(value){
-        // if(this.todoList.length === 0)
-        //     return -1;
         const targetProject = this.todoList.findIndex(item=> item.project === value);
         return targetProject;
     }
@@ -70,6 +72,7 @@ class ToDoList{
 
         this.todoList[this.currentProjectIndex].tasks.push(newTask);
         this.updateCurrentTaskIndex(newTask.title);
+        this.#sortTasks();
         return newTask.display;
     }
 
@@ -108,6 +111,7 @@ class ToDoList{
             this.updateCurrentTaskIndex(targetProject.tasks[0].title);
         else
             this.updateCurrentTaskIndex("");
+        this.#sortTasks();
         return removedTask[0].display;
     }
     removeCurrentProject(){
@@ -146,6 +150,7 @@ class ToDoList{
         this.removeCurrentTask();
         this.newTodoTask(valueArray);
         this.updateCurrentTaskIndex(valueArray[0]);
+        this.#sortTasks();
     }
     toggleDoneCurrentTask(){
         if(this.currentProjectIndex === -1 || this.currentTaskIndex === -1)
@@ -162,6 +167,31 @@ class ToDoList{
     updateCurrentTaskIndex(newTask){
         this.currentTaskIndex = this.#locateTask(newTask);
     }
+    #sortTasks(){
+        this.todoList[this.currentProjectIndex].tasks.sort(this.#sorter);
+    }
+    #sorter(taskA, taskB){
+        let check = compareAsc(taskA.dueDate, taskB.dueDate);
+        if(check === 0){
+            check = comparePriority(taskA.priority, taskB.priority);
+            if(check === 0)
+                if(taskA.done === taskB.done)
+                    check = 0;
+                else if(taskA.done)
+                    check = -1;
+                else 
+                    check = 1;
+        }
+        return check;
+    }
 }
 
 export default ToDoList;
+function comparePriority(taskAPriority, taskBPriority){
+    if(taskAPriority<taskBPriority)
+        return 1;
+    else if(taskAPriority>taskBPriority)
+        return -1;
+    else
+        return 0;
+}

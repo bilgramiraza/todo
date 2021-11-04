@@ -57,28 +57,23 @@ function dataConverter(todoList) {
         let data  = {"project":element.project,
                      "tasks":[]};
         element.tasks.forEach((item)=>{
-            data.tasks.push(item.display);
+            data.tasks.push(item.taskData());
         })
         todoLoader.push(data);
     });
     return todoLoader;
 }
 function loadDummyData(todoList) {
-    todoList.newTodoProject('Main');
-    todoList.newTodoTask(["One", "1997-01-07", 1, true, "Ipsum"]);
-    todoList.newTodoTask(["First", "1997-01-07", 1, false, "Ipsum"]);
+    todoList.newTodoProject('Home');
+    todoList.newTodoTask(["Birthday", "2021-12-09", 1, true, "Birthday of John"]);
+    todoList.newTodoTask(["Get Grocery", "2021-12-09", 2, true, "Grocery List"]);
+    todoList.newTodoTask(["Work Out", "2021-12-09", 2, false, "Grocery List"]);
     
-    todoList.newTodoProject('First');
-    todoList.newTodoTask(["Two", "1997-10-27", 2, true, "Lorem"]);
-    todoList.newTodoTask(["Fourth", "1997-10-27", 4, false, "Lorem"]);
-    
-    todoList.newTodoProject('Second');
-    todoList.newTodoTask(["Three", "2020-08-20", 3, true, "Losum"]);
-    todoList.newTodoTask(["Second", "2020-08-20", 2, false, "Losum"]);
-    
-    todoList.newTodoProject('Third');
-    todoList.newTodoTask(["Four", "2010-03-02", 4, true, "Iprem"]);
-    todoList.newTodoTask(["Third", "2010-03-02", 3, false, "Iprem"]);
+    todoList.newTodoProject('Work');
+    todoList.newTodoTask(["Interview Google", "2021-12-15", 3, false, "Interview with Google"]);
+    todoList.newTodoTask(["Interview Apple", "2021-12-09", 3, false, "Interview with Apple"]);
+    todoList.newTodoTask(["Briefing", "2021-12-09", 3, true, "Briefing meeting"]);
+
 }
 
 //Checks if the browser supports localStorage
