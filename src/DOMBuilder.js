@@ -16,16 +16,18 @@ function DOMBuilder(DOMObject, parentNode=null) {
             element.classList.add(...DOMObject.className);
         if(DOMObject.textContent)
             element.textContent = DOMObject.textContent;
-        if(DOMObject.for)
-            element.setAttribute("for",DOMObject.for)
-        if(DOMObject.id)
-            element.setAttribute("id", DOMObject.id);
-        if(DOMObject.placeholder)
-            element.setAttribute("placeholder", DOMObject.placeholder);
-        if(DOMObject.rows)
-            element.setAttribute("rows", DOMObject.rows);
-        if(DOMObject.type)
-            element.setAttribute("type", DOMObject.type);
+        // if(DOMObject.for)
+        //     element.setAttribute("for",DOMObject.for)
+        // if(DOMObject.id)
+        //     element.setAttribute("id", DOMObject.id);
+        // if(DOMObject.placeholder)
+        //     element.setAttribute("placeholder", DOMObject.placeholder);
+        // if(DOMObject.rows)
+        //     element.setAttribute("rows", DOMObject.rows);
+        // if(DOMObject.type)
+        //     element.setAttribute("type", DOMObject.type);
+        for(const attr in DOMObject.attributes)
+            element.setAttribute(attr, DOMObject.attributes[attr]);
         
         if(DOMObject.childNodes)
         DOMObject.childNodes.forEach((object)=>{

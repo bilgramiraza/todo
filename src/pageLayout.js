@@ -139,14 +139,18 @@ const main = {
 const submitBtn = {
   element: "button",
   className: ["Submit"],
-  type: "button",
   textContent: "Submit",
+  attributes: {
+    type: "button",
+  },
 };
 const cancelBtn = {
   element: "button",
   className: ["Cancel"],
-  type: "button",
   textContent: "Cancel",
+  attributes: {
+    type: "button",
+  },
 };
 const submitCancel = {
   element: "div",
@@ -155,14 +159,18 @@ const submitCancel = {
 };
 const todoTitleLabel = {
   element: "label",
-  for: ["title"],
   textContent: "Title",
+  attributes: {
+    for: ["title"],
+  },
 };
 const todoTitleInput = {
   element: "input",
   type: "text",
-  id: "title",
-  placeholder: "title",
+  attributes: {
+    id: "title",
+    placeholder: "title",
+  },
 };
 const todoItemTitleItem = {
   element: "div",
@@ -171,14 +179,18 @@ const todoItemTitleItem = {
 };
 const todoDiscLabel = {
   element: "label",
-  for: ["discription"],
   textContent: "Discription",
+  attributes: {
+    for: ["discription"],
+  },
 };
 const todoDiscInput = {
   element: "textarea",
-  id: "discription",
-  rows: "3",
-  placeholder: "Enter Details here",
+  attributes: {
+    id: "discription",
+    rows: "3",
+    placeholder: "Enter Details here",
+  },
 };
 const todoItemDiscItem = {
   element: "div",
@@ -187,13 +199,17 @@ const todoItemDiscItem = {
 };
 const todoDueDateLabel = {
   element: "label",
-  for: ["due-date"],
   textContent: "Due Date",
+  attributes: {
+    for: ["due-date"],
+  },
 };
 const todoDueDateInput = {
   element: "input",
-  type: "date",
-  id: "due-date",
+  attributes: {
+    type: "date",
+    id: "due-date",
+  },
 };
 const todoItemDueDateItem = {
   element: "div",
@@ -202,14 +218,18 @@ const todoItemDueDateItem = {
 };
 const todoPriorityLabel = {
   element: "label",
-  for: ["priority"],
   textContent: "Priority",
+  attributes: {
+    for: ["priority"],
+  },
 };
 const todoPriorityInput = {
   element: "input",
-  type: "number",
-  id: "priority",
-  placeholder: "Priority",
+  attributes: {
+    type: "number",
+    id: "priority",
+    placeholder: "Priority",
+  },
 };
 const todoItemPriorityItem = {
   element: "div",
@@ -218,14 +238,18 @@ const todoItemPriorityItem = {
 };
 const todoDoneLabel = {
   element: "label",
-  for: ["done"],
   textContent: "Done",
+  attributes: {
+    for: ["done"],
+  },
 };
 const todoDoneCheckbox = {
-    element: "input",
+  element: "input",
+  attributes: {
     type: "checkbox",
     id: "done",
-  };
+  },
+};
 const todoItemDoneItem = {
   element: "div",
   className: ["form-item"],
@@ -253,14 +277,18 @@ const itemModalBox = {
 };
 const projectTitleLabel = {
   element: "label",
-  for: ["project"],
   textContent: "Project Title",
+  attributes: {
+    for: ["project"],
+  },
 };
 const projectTitleInput = {
   element: "input",
-  type: "text",
-  id: "project",
-  placeholder: "Project Title",
+  attributes: {
+    type: "text",
+    id: "project",
+    placeholder: "Project Title",
+  },
 };
 const projectFormItem = {
   element: "div",
