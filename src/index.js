@@ -42,14 +42,15 @@ TASKS:
     Sorting Tasks by Date       Paused(will Progress after UI improvements)
         Sorting Rule(Date->Priority->Done Status)
 
-    Finalize UI
+    Finalize UI         Active
         ProjectList and taskGrid Live Update        Done
             Adding or Deleting Projects Repaints the appropriate Panels with new lists
-        Select Color Scheme
+        Priority Input setup        Done
+        Finalize Form Layout and types    Active 
         Convert from outlines to borders
+        Select Color Scheme
         Pick Fonts
         Setup Pretty buttons
-        Finalize Form Layout and types(Priority Input setup)
         Add CSS for If task is complete
         Dark Mode Toggle
         Add Github Link

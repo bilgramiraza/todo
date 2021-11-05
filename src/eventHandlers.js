@@ -221,7 +221,7 @@ function formBlank(DirForm, modalBoxClassName) {
         case "itemFormModal modalBox":
             if(DirForm.taskTitle.value === "" ||
                DirForm.taskDueDate.value === "" ||
-               DirForm.taskPriority.value === "")
+               DirForm.taskPriority.value === "0")
                 return true;
             break;
     }

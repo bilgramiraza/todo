@@ -223,13 +223,41 @@ const todoPriorityLabel = {
     for: ["priority"],
   },
 };
-const todoPriorityInput = {
-  element: "input",
+const todoPriorityOption0 = {
+  element: "option",
+  textContent: "Select A Priority",
   attributes: {
-    type: "number",
-    id: "priority",
-    placeholder: "Priority",
+    value: "0",
+    selected: "",
   },
+};
+const todoPriorityOption1 = {
+  element: "option",
+  textContent: "Normal",
+  attributes: {
+    value: "1",
+  },
+};
+const todoPriorityOption2 = {
+  element: "option",
+  textContent: "High",
+  attributes: {
+    value: "2",
+  },
+};
+const todoPriorityOption3 = {
+  element: "option",
+  textContent: "IMPORTANT",
+  attributes: {
+    value: "3",
+  },
+};
+const todoPriorityInput = {
+  element: "select",
+  attributes: {
+    id: "priority",
+  },
+  childNodes:[todoPriorityOption0, todoPriorityOption1, todoPriorityOption2, todoPriorityOption3],
 };
 const todoItemPriorityItem = {
   element: "div",
