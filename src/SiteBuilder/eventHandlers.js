@@ -1,6 +1,6 @@
 import {buildProjects, buildTasks, displayTask} from './display';
-import {ErrorDisplay} from './errorHandling';
-import {saveData} from './loadProjects';
+import {ErrorDisplay} from '../ErrorHandling/errorHandling';
+import {saveData} from '../loadProjects';
 
 function eventHandlers(todoList, DirForm, DirDisplay) {
     document.body.addEventListener("click",(event)=>{

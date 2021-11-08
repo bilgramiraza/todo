@@ -1,10 +1,10 @@
-import './reset.css';
-import './style.css';
+import './CSS/reset.css';
+import './CSS/style.css';
 import {loadProjects} from './loadProjects';
-import {basePageBuilder, buildProjects, displayTask} from "./display";
-import { DirectoryForm, DirectoryDisplay } from './DOMDirectory';
-import eventHandlers from './eventHandlers';
-import {buildErrorDOM} from './errorHandling';
+import {basePageBuilder, buildProjects, displayTask} from "./SiteBuilder/display";
+import { DirectoryForm, DirectoryDisplay } from './DOM/DOMDirectory';
+import eventHandlers from './SiteBuilder/eventHandlers';
+import {buildErrorDOM} from './ErrorHandling/errorHandling';
 
 basePageBuilder();
 buildErrorDOM();
@@ -46,11 +46,14 @@ TASKS:
         ProjectList and taskGrid Live Update        Done
             Adding or Deleting Projects Repaints the appropriate Panels with new lists
         Priority Input setup        Done
-        Finalize Form Layout and types    Active 
-        Convert from outlines to borders
-        Select Color Scheme
-        Pick Fonts
-        Setup Pretty buttons
+        CSS Cleanup
+            Convert from outlines to borders    Done
+            Setup Spacing between elements  Active    
+            Finalize Form Layout and types  Active
+            Relocate Buttons        Active
+            Setup Pretty buttons
+            Pick Fonts
+            Select Color Scheme
         Add CSS for If task is complete
         Dark Mode Toggle
         Add Github Link

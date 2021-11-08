@@ -2,54 +2,64 @@
     box-sizing: border-box;
     font-size: 1em;
 }
+button{
+    background-color: transparent;
+    border: none;
+}
+/* button:hover{
+    background-color: transparent;
+} */
 body{
     width: 100vw;
     height:100vh;
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow: hidden;
 }
+
+/* MENU SECTION */
 header{
     display: flex;
     flex-direction: row;
     justify-content:flex-start;
     height: 7%;
     padding: 0.25em 1em;
-    outline: green dotted 0.25em;
+    color: #080F0F;
+    background-color: #A4BAB7;
 }
 .headerBtnGroup{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
+/* MENU SECTION */
+
+/* MENU SECTION */
 main{
     display: flex;
     flex-direction: row;
     height: 84%;
-    padding: 1em 0em;
-    outline: green dotted 0.25em;
+    border: 0.25em solid black;
 }
 .menuBar{
     width: 15%;
     display: flex;
     flex-direction: column;
-    padding: 1%;
-    outline: blue dotted 0.25em;
+    /* background-color: gray; */
+    border-right: 0.25em dotted black;
 }
 .menuBarBtns{
     height: 40%;
     display: flex;
     flex-direction: column;
-    outline: red dotted 0.25em;
 }
 .projectList{
     height: 60%;
     display: flex;
     flex-direction: column;
     align-content: center;
-    outline: red dotted 0.25em;
     overflow: auto;
+    border-top: 0.25em dotted black;
 }
 .project{
     min-height: 1.5em;
@@ -57,18 +67,19 @@ main{
     padding: 0.25rem;
     margin: 0.25rem;
     text-align: center;
-    outline: purple dotted 0.125rem;
+    border: 0.25em dotted black;
 }
+/* MENU SECTION */
+
+/* CONTENT SECTION */
 .content{
     width: 85%;
     display: flex;
     flex-direction: column;
-    padding: 1%;
-    outline: blue dotted 0.25em;
 }
 .projectTitleBar{
     height: 10%;
-    outline: red dotted 0.25em;
+    border-bottom: 0.25em dotted black;
 }
 .taskGrid{
     height: 40%;
@@ -76,7 +87,6 @@ main{
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    outline: red dotted 0.25em;
 }
 .task{
     min-height: 1.5rem;
@@ -84,7 +94,7 @@ main{
     width: 99%;
     margin: 0.25rem;
     padding: 0.125rem;
-    outline: purple dotted 0.125rem;
+    border: 0.25em dotted black;
 }
 .taskDisplay{
     height: 50%;
@@ -92,19 +102,18 @@ main{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    outline: red dotted 0.25em;
+    border-top: 0.25em dotted black;
 }
 .displayTaskTitle{
     height: 10%;
     width: 50%;
-    outline: purple dotted 0.125rem;
+    border-inline: 0.25em dotted black;
 }
 .displayTaskDetails{
     display: flex;
     flex-direction: row;
     height: 80%;
     width: 100%;
-    outline: purple dotted 0.125rem;
 }
 .displayTaskDescription{
     display: flex;
@@ -112,29 +121,31 @@ main{
     justify-content: space-between;
     width: 75%;
     text-align: left;
-    outline: purple dotted 0.125rem;
+    border: 0.25em dotted black;
+    border-left: none;
 }
 .taskDescriptionBox{
     width: 49%;
-    outline: black dotted 0.125rem;
+    border-right: 0.25em dotted black;
 }
 .taskDescriptionCheckbox{
     width: 49%;
-    outline: black dotted 0.125rem;
 }
 .displayTaskStats{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 25%;
-    outline: purple dotted 0.125rem;
+    border-block: 0.25em dotted black;
 }
 .toggleDoneBtn{
     height: 10%;
     width: 95%;
     cursor: pointer;
-    outline: purple dotted 0.125rem;
 }
+/* CONTENT SECTION */
+
+/* FORM SECTION */
 .cover{
     height: 100%;
     width: 100%;
@@ -219,63 +230,16 @@ input[type='checkbox']{
 .hide{
     display: none;
 }
+/* FORM SECTION */
+
+/* FOOTER SECTION */
 footer{
     height: 7%;
     padding: 0.25rem;
     text-align: center;
     font-size: 1.5em;
-    outline: green dotted 0.25rem;
+    color: #080F0F;
+    background-color: #A4BAB7;
+    border: green dotted 0.25rem;
 }
-
-/* ////////// 
-
-/* The switch - the box around the slider */
-/* .switch {
-    position: relative;
-    display: inline-block;
-    height: 2em;
-    width: 4.5em;
-  }
-   */
-  /* Hide default HTML checkbox */
-  /* .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  } */
-  
-  /* The slider */
-  /* .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  } */
-/*   
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 1.5em;
-    width: 2em;
-    left: 0.25em;
-    bottom: 0.25em;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  } */
-  
-  /* input:checked + .slider {
-    background-color: #2196F3;
-  } */
-  
-  /* input:checked + .slider:before {
-    -webkit-transform: translateX(2em);
-    -ms-transform: translateX(2m);
-    transform: translateX(2em);
-  }
-//////////  */
+/* FOOTER SECTION */

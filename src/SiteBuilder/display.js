@@ -1,6 +1,6 @@
-import DOMBuilder from "./DOMBuilder";
+import DOMBuilder from "../DOM/DOMBuilder";
 import pageLayout from "./pageLayout";
-import { DirectoryDisplay } from './DOMDirectory';
+import { DirectoryDisplay } from '../DOM/DOMDirectory';
 
 
 const basePageBuilder = ()=> {
