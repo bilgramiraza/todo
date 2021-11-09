@@ -42,6 +42,8 @@ TASKS:
     Sorting Tasks by Date       Paused(will Progress after UI improvements)
         Sorting Rule(Date->Priority->Done Status)
 
+    Reorganize SRC File Structure   Done
+
     Finalize UI         Active
         ProjectList and taskGrid Live Update        Done
             Adding or Deleting Projects Repaints the appropriate Panels with new lists

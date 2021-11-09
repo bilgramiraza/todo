@@ -14,8 +14,8 @@ const DirectoryDisplay = ()=>{
     return {
         formModal: document.querySelector("form"),
         projectLegend: document.querySelector(".projectFormModal>legend"),
-        taskLegend: document.querySelector(".itemFormModal>legend"),
-        taskForm: document.querySelector(".itemFormModal"),
+        taskLegend: document.querySelector(".taskFormModal>legend"),
+        taskForm: document.querySelector(".taskFormModal"),
         projectForm: document.querySelector(".projectFormModal"),
         taskTitle: document.querySelector(".displayTaskTitle"),
         taskDiscription: document.querySelector(".taskDescriptionBox"),

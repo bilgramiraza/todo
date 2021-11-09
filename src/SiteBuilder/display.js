@@ -31,7 +31,6 @@ const buildTasks = (todoList)=>{
     const taskList = document.querySelector(".taskGrid");    
     if(taskList.children)
         clearPanel(taskList);
-    //TODO: Sorting tasks by priority before displaying
     if(taskTitles !== null && taskTitles.length>0)
         taskTitles.forEach((title)=>{
             const Task = {

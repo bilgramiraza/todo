@@ -1,14 +1,14 @@
 import submitCancel from "./Sub-Forms/SubmitCancel";
 import projectFormGroup from "./Sub-Forms/ProjectForm";
-import todoItemFormGroup from "./Sub-Forms/TaskForm";
+import taskFormGroup from "./Sub-Forms/TaskForm";
 
-const itemModalTitle = {
+const taskModalTitle = {
     element: "legend",
 };
-const itemModalBox = {
+const taskModalBox = {
     element: "fieldset",
-    className: ["itemFormModal","modalBox","hide"],
-    childNodes: [itemModalTitle, todoItemFormGroup, submitCancel],
+    className: ["taskFormModal","modalBox","hide"],
+    childNodes: [taskModalTitle, taskFormGroup, submitCancel],
 };
   
 const projectModalTitle = {
@@ -22,7 +22,7 @@ const projectModalBox = {
 const formModal = {
     element: "form",
     className: ["cover", "hide"],
-    childNodes: [itemModalBox, projectModalBox],
+    childNodes: [taskModalBox, projectModalBox],
 };
 
 export default formModal;

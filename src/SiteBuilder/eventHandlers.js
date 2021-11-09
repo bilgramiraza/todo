@@ -5,7 +5,6 @@ import {saveData} from '../loadProjects';
 function eventHandlers(todoList, DirForm, DirDisplay) {
     document.body.addEventListener("click",(event)=>{
         let check = null;
-        // ErrorDisplay(event.target.className);
         switch (event.target.className) {
             case "editProjectBtn":
                 check = todoList.getCurrentProject();
@@ -30,12 +29,6 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 break;
             case "addTaskBtn":
                 toggleTaskForm(DirDisplay, "New Task");
-                break;
-            case "displayProjectBtn":
-                console.log(todoList.getAllProjectTitles());
-                break;
-            case "displayTaskBtn":
-                console.log(todoList.getAllTaskTitles());
                 break;
             case "toggleDoneBtn":
                 const result = todoList.toggleDoneCurrentTask();
@@ -94,9 +87,6 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 resetTaskForm(DirForm);
                 clearFormModal(DirDisplay);
                 break;
-            // default:
-            //     console.log(event.target);
-            //     break;
         }
     });
 }   

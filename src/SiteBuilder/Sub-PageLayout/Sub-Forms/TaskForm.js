@@ -1,11 +1,11 @@
-const todoTitleLabel = {
+const taskTitleLabel = {
     element: "label",
     textContent: "Title",
     attributes: {
       for: ["title"],
     },
   };
-  const todoTitleInput = {
+  const taskTitleInput = {
     element: "input",
     type: "text",
     attributes: {
@@ -13,19 +13,19 @@ const todoTitleLabel = {
       placeholder: "title",
     },
   };
-  const todoItemTitleItem = {
+  const taskTitleItem = {
     element: "div",
     className: ["form-item"],
-    childNodes: [todoTitleLabel, todoTitleInput],
+    childNodes: [taskTitleLabel, taskTitleInput],
   };
-  const todoDiscLabel = {
+  const taskDiscLabel = {
     element: "label",
     textContent: "Discription",
     attributes: {
       for: ["discription"],
     },
   };
-  const todoDiscInput = {
+  const taskDiscInput = {
     element: "textarea",
     attributes: {
       id: "discription",
@@ -33,38 +33,38 @@ const todoTitleLabel = {
       placeholder: "Enter Details here",
     },
   };
-  const todoItemDiscItem = {
+  const taskDiscItem = {
     element: "div",
     className: ["form-item"],
-    childNodes: [todoDiscLabel, todoDiscInput],
+    childNodes: [taskDiscLabel, taskDiscInput],
   };
-  const todoDueDateLabel = {
+  const taskDueDateLabel = {
     element: "label",
     textContent: "Due Date",
     attributes: {
       for: ["due-date"],
     },
   };
-  const todoDueDateInput = {
+  const taskDueDateInput = {
     element: "input",
     attributes: {
       type: "date",
       id: "due-date",
     },
   };
-  const todoItemDueDateItem = {
+  const taskDueDateItem = {
     element: "div",
     className: ["form-item"],
-    childNodes: [todoDueDateLabel, todoDueDateInput],
+    childNodes: [taskDueDateLabel, taskDueDateInput],
   };
-  const todoPriorityLabel = {
+  const taskPriorityLabel = {
     element: "label",
     textContent: "Priority",
     attributes: {
       for: ["priority"],
     },
   };
-  const todoPriorityOption0 = {
+  const taskPriorityOption0 = {
     element: "option",
     textContent: "Select A Priority",
     attributes: {
@@ -72,67 +72,67 @@ const todoTitleLabel = {
       selected: "",
     },
   };
-  const todoPriorityOption1 = {
+  const taskPriorityOption1 = {
     element: "option",
     textContent: "Normal",
     attributes: {
       value: "1",
     },
   };
-  const todoPriorityOption2 = {
+  const taskPriorityOption2 = {
     element: "option",
     textContent: "High",
     attributes: {
       value: "2",
     },
   };
-  const todoPriorityOption3 = {
+  const taskPriorityOption3 = {
     element: "option",
     textContent: "IMPORTANT",
     attributes: {
       value: "3",
     },
   };
-  const todoPriorityInput = {
+  const taskPriorityInput = {
     element: "select",
     attributes: {
       id: "priority",
     },
-    childNodes:[todoPriorityOption0, todoPriorityOption1, todoPriorityOption2, todoPriorityOption3],
+    childNodes:[taskPriorityOption0, taskPriorityOption1, taskPriorityOption2, taskPriorityOption3],
   };
-  const todoItemPriorityItem = {
+  const taskPriorityItem = {
     element: "div",
     className: ["form-item"],
-    childNodes: [todoPriorityLabel, todoPriorityInput],
+    childNodes: [taskPriorityLabel, taskPriorityInput],
   };
-  const todoDoneLabel = {
+  const taskDoneLabel = {
     element: "label",
     textContent: "Done",
     attributes: {
       for: ["done"],
     },
   };
-  const todoDoneCheckbox = {
+  const taskDoneCheckbox = {
     element: "input",
     attributes: {
       type: "checkbox",
       id: "done",
     },
   };
-  const todoItemDoneItem = {
+  const taskDoneItem = {
     element: "div",
     className: ["form-item"],
-    childNodes: [todoDoneLabel, todoDoneCheckbox], 
+    childNodes: [taskDoneLabel, taskDoneCheckbox], 
   };
-  const todoItemFormGroup = {
+  const taskFormGroup = {
     element: "div",
     className: ["form-group"],
     childNodes: [
-      todoItemTitleItem,
-      todoItemDiscItem,
-      todoItemDueDateItem,
-      todoItemPriorityItem,
-      todoItemDoneItem,
+      taskTitleItem,
+      taskDiscItem,
+      taskDueDateItem,
+      taskPriorityItem,
+      taskDoneItem,
     ],
   };
-export default todoItemFormGroup;
+export default taskFormGroup;
