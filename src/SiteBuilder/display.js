@@ -50,8 +50,24 @@ const displayTask = (todoList)=>{
     DirDisplay.taskTitle.textContent = task[0];
     DirDisplay.taskDiscription.textContent = task[4];
     DirDisplay.taskDueDate.textContent = task[1];
-    DirDisplay.taskPriority.textContent = task[2];
     DirDisplay.taskDone.textContent = task[3];
+    switch (task[2]) {
+        case 1:
+        case "1":
+            DirDisplay.taskPriority.textContent = "Normal"; 
+            break;
+        case 2:
+        case "2":
+            DirDisplay.taskPriority.textContent = "High"; 
+            break;
+        case 3:
+        case "3":
+            DirDisplay.taskPriority.textContent = "IMPORTANT"; 
+            break;
+        default:
+            DirDisplay.taskPriority.textContent = "Invalid"; 
+            break;
+    }
 }
 function clearPanel(parentNode) {
     while(parentNode.firstChild){

@@ -44,16 +44,18 @@ TASKS:
 
     Reorganize SRC File Structure   Done
 
+    Add Time input and Display
+
     Finalize UI         Active
         ProjectList and taskGrid Live Update        Done
             Adding or Deleting Projects Repaints the appropriate Panels with new lists
         Priority Input setup        Done
-        CSS Cleanup
+        CSS Cleanup     Active
             Convert from outlines to borders    Done
-            Setup Spacing between elements  Active    
-            Finalize Form Layout and types  Active
-            Relocate Buttons        Active
-            Setup Pretty buttons
+            Setup Spacing between elements  Done    
+            Finalize Form Layout and types  Done
+            Relocate Buttons        Done
+            Setup Pretty buttons    Active
             Pick Fonts
             Select Color Scheme
         Add CSS for If task is complete

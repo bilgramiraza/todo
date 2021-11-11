@@ -1,21 +1,38 @@
-import { addProjectBtn, addTaskBtn, removeProjectBtn, editProjectBtn } from "./Buttons";
+import { addProjectBtn, removeProjectBtn, editProjectBtn } from "./Buttons";
 
-  const menuBarBtns = {
+const projectBtnsTitle = {
+  element: "div",
+  className: ["projectBtnsTitle"],
+  textContent: "Project Menu",
+};
+  const projectBtns = {
     element: "div",
     className: ["menuBarBtns"],
     childNodes: [addProjectBtn,
-                 addTaskBtn,
                  removeProjectBtn,
                  editProjectBtn],
   };
-  const menuItemsGroup ={
+  const projectMenuGroup = {
+    element: "div",
+    childNodes: [projectBtnsTitle, projectBtns],
+  };
+  const projectListTitle = {
+    element: "div",
+    className: ["projectListTitle"],
+    textContent: "Project List",
+  };
+  const projectList ={
     element: "div",
     className: ["projectList"],
+  };
+  const projectListGroup = {
+    element: "div",
+    childNodes: [projectListTitle, projectList],
   };
   const menuBar = {
     element: "div",
     className: ["menuBar"],
-    childNodes: [menuBarBtns, menuItemsGroup],
+    childNodes: [projectMenuGroup, projectListGroup],
   };
   
 export default menuBar;

@@ -48,18 +48,37 @@ main{
     /* background-color: gray; */
     border-right: 0.25em dotted black;
 }
+.menuBar>div:nth-child(1){
+    height: 30%;
+}
+.menuBar>div:nth-child(2){
+    border-top: 0.25em dotted black;
+    height: 70%;
+}
+.projectBtnsTitle,
+.projectListTitle{
+    border-bottom: 0.25em solid black;
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+.projectBtnsTitle{
+    height: 20%;
+}
+.projectListTitle{
+    height: 10%;
+}
 .menuBarBtns{
-    height: 40%;
+    height: 80%;
     display: flex;
     flex-direction: column;
 }
 .projectList{
-    height: 60%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     align-content: center;
     overflow: auto;
-    border-top: 0.25em dotted black;
 }
 .project{
     min-height: 1.5em;
@@ -104,8 +123,14 @@ main{
     text-align: center;
     border-top: 0.25em dotted black;
 }
-.displayTaskTitle{
+.displayTaskHeader{
     height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.displayTaskTitle{
     width: 50%;
     border-inline: 0.25em dotted black;
 }
@@ -136,7 +161,20 @@ main{
     flex-direction: column;
     justify-content: space-around;
     width: 25%;
-    border-block: 0.25em dotted black;
+    border-block: 0.25rem dotted black;
+}
+.displayTaskStats>div{
+    display: flex;
+    flex-direction: row;
+    height: 15%;
+    align-items: center;
+    border-block: 0.125rem dotted black;
+}
+.displayTaskStats>div>div:nth-child(1){
+    width: 25%;
+}
+.displayTaskStats>div>div:nth-child(2){
+    width: 75%;
 }
 .toggleDoneBtn{
     height: 10%;
