@@ -4,11 +4,14 @@
 }
 button{
     background-color: transparent;
-    border: none;
+    border: 0.125rem dotted black;
+    margin: 0.125rem;
 }
-/* button:hover{
-    background-color: transparent;
-} */
+button:hover,
+button:focus-visible{
+    background-color: #A4BAB7;
+    border-style: solid;
+}
 body{
     width: 100vw;
     height:100vh;
@@ -46,13 +49,13 @@ main{
     display: flex;
     flex-direction: column;
     /* background-color: gray; */
-    border-right: 0.25em dotted black;
+    border-right: 0.25em solid black;
 }
 .menuBar>div:nth-child(1){
     height: 30%;
 }
 .menuBar>div:nth-child(2){
-    border-top: 0.25em dotted black;
+    border-top: 0.25em solid black;
     height: 70%;
 }
 .projectBtnsTitle,
@@ -72,6 +75,10 @@ main{
     height: 80%;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+}
+.menuBarBtns>button{
+    padding: min(15%, 0.5rem);
 }
 .projectList{
     height: 80%;
@@ -88,6 +95,9 @@ main{
     text-align: center;
     border: 0.25em dotted black;
 }
+.project:hover{
+    background-color: #A4BAB7;
+}
 /* MENU SECTION */
 
 /* CONTENT SECTION */
@@ -98,7 +108,7 @@ main{
 }
 .projectTitleBar{
     height: 10%;
-    border-bottom: 0.25em dotted black;
+    border-bottom: 0.25em solid black;
 }
 .taskGrid{
     height: 40%;
@@ -115,13 +125,16 @@ main{
     padding: 0.125rem;
     border: 0.25em dotted black;
 }
+.task:hover{
+    background-color: #A4BAB7;
+}
 .taskDisplay{
     height: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-top: 0.25em dotted black;
+    border-top: 0.25em solid black;
 }
 .displayTaskHeader{
     height: 10%;
@@ -132,7 +145,7 @@ main{
 }
 .displayTaskTitle{
     width: 50%;
-    border-inline: 0.25em dotted black;
+    border-inline: 0.25em solid black;
 }
 .displayTaskDetails{
     display: flex;
@@ -146,12 +159,12 @@ main{
     justify-content: space-between;
     width: 75%;
     text-align: left;
-    border: 0.25em dotted black;
+    border: 0.25em solid black;
     border-left: none;
 }
 .taskDescriptionBox{
     width: 49%;
-    border-right: 0.25em dotted black;
+    border-right: 0.25em solid black;
 }
 .taskDescriptionCheckbox{
     width: 49%;
@@ -161,7 +174,7 @@ main{
     flex-direction: column;
     justify-content: space-around;
     width: 25%;
-    border-block: 0.25rem dotted black;
+    border-block: 0.25rem solid black;
 }
 .displayTaskStats>div{
     display: flex;
@@ -177,9 +190,28 @@ main{
     width: 75%;
 }
 .toggleDoneBtn{
+    margin: 0rem;
     height: 10%;
-    width: 95%;
+    width: 100%;
     cursor: pointer;
+    border:none;
+}
+.toggleDoneBtn:hover,
+.toggleDoneBtn:focus-visible{
+    background-color: initial;
+    border:none;
+}
+.toggleDoneBtn[data-status=true]{
+    background-color: red;
+    color: white;
+}
+.toggleDoneBtn[data-status=false]{
+    background-color: green;
+    color: white;
+}
+.active{
+    background-color: #A4BAB7;
+    border-style: solid;
 }
 /* CONTENT SECTION */
 
@@ -278,6 +310,5 @@ footer{
     font-size: 1.5em;
     color: #080F0F;
     background-color: #A4BAB7;
-    border: green dotted 0.25rem;
 }
 /* FOOTER SECTION */

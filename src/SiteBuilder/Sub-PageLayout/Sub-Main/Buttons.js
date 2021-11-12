@@ -22,6 +22,9 @@ const toggleDoneBtn = {
     element: "button",
     className: ["toggleDoneBtn"],
     textContent: "Toggle Done",
+    attributes: {
+        "data-status": "",
+    },
 };
 const removeTaskBtn = {
     element: "button",

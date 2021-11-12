@@ -55,7 +55,12 @@ TASKS:
             Setup Spacing between elements  Done    
             Finalize Form Layout and types  Done
             Relocate Buttons        Done
-            Setup Pretty buttons    Active
+            Setup Pretty buttons    Done
+                Add Borders to buttons      Done
+                List Divs(Project List & Task List) change CSS when     Done
+                    Hovered on      Done
+                    Selected        Done
+                toggleDone Button needs to change color on Status       Done
             Pick Fonts
             Select Color Scheme
         Add CSS for If task is complete

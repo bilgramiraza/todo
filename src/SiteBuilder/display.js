@@ -50,7 +50,7 @@ const displayTask = (todoList)=>{
     DirDisplay.taskTitle.textContent = task[0];
     DirDisplay.taskDiscription.textContent = task[4];
     DirDisplay.taskDueDate.textContent = task[1];
-    DirDisplay.taskDone.textContent = task[3];
+    toggleDone(DirDisplay.taskDone, task[3]);
     switch (task[2]) {
         case 1:
         case "1":
@@ -74,5 +74,11 @@ function clearPanel(parentNode) {
         parentNode.removeChild(parentNode.lastChild);
     }
 }
-
-export {basePageBuilder, buildProjects, buildTasks, displayTask};
+function toggleDone(doneBtnElement, result) {
+        if(result)
+            doneBtnElement.textContent = "Completed";
+        else
+            doneBtnElement.textContent = "Active";
+        doneBtnElement.dataset.status = result;
+}
+export {basePageBuilder, buildProjects, buildTasks, displayTask, toggleDone};

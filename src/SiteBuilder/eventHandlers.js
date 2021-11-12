@@ -1,4 +1,4 @@
-import {buildProjects, buildTasks, displayTask} from './display';
+import {buildProjects, buildTasks, displayTask, toggleDone} from './display';
 import {ErrorDisplay} from '../ErrorHandling/errorHandling';
 import {saveData} from '../loadProjects';
 
@@ -32,22 +32,22 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 break;
             case "toggleDoneBtn":
                 const result = todoList.toggleDoneCurrentTask();
-                if(result === null){
+                if(result === null)
                     ErrorDisplay("No Task Selected");
-                    break;
-                }
                 else{
-                    event.target.textContent = result;
+                    toggleDone(DirDisplay.taskDone, result);
                     saveData(todoList);
                 }
                 break;
             case "project":
                 todoList.updateCurrentProjectIndex(event.target.textContent);
                 DirForm.currentProject.textContent = todoList.getCurrentProject();
+                activeProject(event.target);
                 buildTasks(todoList);
                 break;
             case "task":
                 todoList.updateCurrentTaskIndex(event.target.textContent);
+                activeTask(event.target);
                 displayTask(todoList);
                 break;
             case "removeProjectBtn":
@@ -216,4 +216,16 @@ function formBlank(DirForm, modalBoxClassName) {
             break;
     }
     return false;
+}
+function activeProject(targetElement) {
+    const oldTarget = document.querySelector(".project.active");
+    if(oldTarget)
+        oldTarget.classList.remove("active");
+    targetElement.classList.add("active");
+}
+function activeTask(targetElement) {
+    const oldTarget = document.querySelector(".task.active");
+    if(oldTarget)
+        oldTarget.classList.remove("active");
+    targetElement.classList.add("active");
 }
