@@ -78,7 +78,7 @@ main{
     justify-content: space-evenly;
 }
 .menuBarBtns>button{
-    padding: min(15%, 0.5rem);
+    padding: min(15%, 0.25rem);
 }
 .projectList{
     height: 80%;

@@ -23,7 +23,7 @@ class TodoTask{
         return this._description;
     }
     get display(){
-       return [this._title,format(this._dueDate, "EEEE do MMMM uuuu"), this._priority, this._done, this._description];
+       return [this._title,format(this._dueDate, "do MMMM uuuu"), this._priority, this._done, this._description];
     }
     taskData(){
         return [this._title,format(this._dueDate, "uuuu-MM-dd"), this._priority, this._done, this._description];
@@ -108,7 +108,20 @@ class ToDoList{
         const targetTask = targetProject.tasks[this.currentTaskIndex];
         return targetTask.display;
     }
-
+    getTaskDueDay(){
+        if(this.currentProjectIndex === -1 || this.currentTaskIndex === -1)
+            return null;
+        const targetProject = this.todoList[this.currentProjectIndex];
+        const targetTask = targetProject.tasks[this.currentTaskIndex];
+        return format(targetTask.dueDate, "eeee");
+    }
+    getTaskDeadline(){
+        if(this.currentProjectIndex === -1 || this.currentTaskIndex === -1)
+            return null;
+        const targetProject = this.todoList[this.currentProjectIndex];
+        const targetTask = targetProject.tasks[this.currentTaskIndex];
+        return formatDistanceToNow(targetTask.dueDate);
+    }
     removeCurrentTask(){
         if(this.currentProjectIndex === -1 || this.currentTaskIndex === -1)
             return null;

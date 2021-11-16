@@ -20,6 +20,8 @@ const DirectoryDisplay = ()=>{
         taskTitle: document.querySelector(".displayTaskTitle"),
         taskDiscription: document.querySelector(".taskDescriptionBox"),
         taskDueDate: document.querySelector(".displayDueDate"),
+        taskDueDay: document.querySelector(".displayDueDay"),
+        taskDeadline: document.querySelector(".displayDeadline"),
         taskPriority: document.querySelector(".displayPriority"),
         taskDone: document.querySelector(".toggleDoneBtn"),
     };

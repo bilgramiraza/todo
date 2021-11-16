@@ -44,29 +44,30 @@ TASKS:
 
     Reorganize SRC File Structure   Done
 
-    Add Time input and Display
-
     Finalize UI         Active
         ProjectList and taskGrid Live Update        Done
             Adding or Deleting Projects Repaints the appropriate Panels with new lists
         Priority Input setup        Done
+        Display             Done
+            day of Due Date
+            No of Days to Due Date
         CSS Cleanup     Active
             Convert from outlines to borders    Done
             Setup Spacing between elements  Done    
             Finalize Form Layout and types  Done
             Relocate Buttons        Done
             Setup Pretty buttons    Done
-                Add Borders to buttons      Done
-                List Divs(Project List & Task List) change CSS when     Done
-                    Hovered on      Done
-                    Selected        Done
-                toggleDone Button needs to change color on Status       Done
+                Add Borders to buttons
+                List Divs(Project List & Task List) change CSS when
+                    Hovered on
+                    Selected
+                toggleDone Button needs to change color on Status
             Pick Fonts
             Select Color Scheme
-        Expand Task Grid with more details          Active
-            Task title:Days Remaining: Priority     Done
-            Color Coded Status                      Done
-            Add CSS for If task is complete         Done
+        Expand Task Grid with more details          Done
+            Task title:Days Remaining: Priority     
+            Color Coded Status                      
+            Add CSS for If task is complete         
         Dark Mode Toggle
         Add Github Link
 
@@ -75,8 +76,10 @@ TASKS:
         Hidden Menu Bar
         Single Column Based layout
     
-    Add Optional CheckLists to TodoLists(Bonus Credit)
-        Modify CheckLists(when Added)
+    Bonus Credit 
+        CheckLists to TodoLists
+        Modify CheckLists
+        Add Time input and Display
 
     Bugs:
     Can have Duplicate Projects and tasks. Need to Implement Duplicate check.

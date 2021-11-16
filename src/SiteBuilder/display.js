@@ -41,12 +41,27 @@ const buildTasks = (todoList)=>{
 const displayTask = (todoList)=>{
     const DirDisplay = DirectoryDisplay();
     let task = todoList.getCurrentTask();
+    let taskDueDay = todoList.getTaskDueDay();
+    let taskDeadline =  todoList.getTaskDeadline();
     if(task === null)
         task = ["Title", "Due Date", "Priority", "Task Discription", "Done Status"];
+
+    if(taskDueDay === null)
+        task.push(["Due Day"]);
+    else
+        task.push([taskDueDay]);
+
+    if(taskDeadline === null)
+        task.push(["Days left"]);
+    else
+        task.push([taskDeadline]);
+
     DirDisplay.taskTitle.textContent = task[0];
     DirDisplay.taskDiscription.textContent = task[4];
     DirDisplay.taskDueDate.textContent = task[1];
     toggleDone(DirDisplay.taskDone, task[3]);
+    DirDisplay.taskDueDay.textContent = task[5];
+    DirDisplay.taskDeadline.textContent = task[6];
     switch (task[2]) {
         case 1:
         case "1":
