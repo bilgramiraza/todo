@@ -27,18 +27,14 @@ const buildProjects = (todoList)=>{
 };
 
 const buildTasks = (todoList)=>{
-    const taskTitles = todoList.getAllTaskTitles();
-    const taskList = document.querySelector(".taskGrid");    
+    const taskSummary = todoList.getAllTaskSummary();
+    const taskList = document.querySelector(".taskPanel");
     if(taskList.children)
         clearPanel(taskList);
-    if(taskTitles !== null && taskTitles.length>0)
-        taskTitles.forEach((title)=>{
-            const Task = {
-                element: "div",
-                className: ["task"],
-                textContent: title,
-            };
-            DOMBuilder(Task, taskList);
+    if(taskSummary !== null && taskSummary.length>0)
+        taskSummary.forEach((taskSummary)=>{
+            const taskDom = taskDOMFactory(taskSummary)
+            DOMBuilder(taskDom, taskList);
         });
 };
 
@@ -82,3 +78,49 @@ function toggleDone(doneBtnElement, result) {
         doneBtnElement.dataset.status = result;
 }
 export {basePageBuilder, buildProjects, buildTasks, displayTask, toggleDone};
+
+function taskDOMFactory(Summary) {
+    let priority;
+    switch (Summary.priority) {
+        case 1:
+        case "1":
+            priority = "Normal"; 
+            break;
+        case 2:
+        case "2":
+            priority = "High"; 
+            break;
+        case 3:
+        case "3":
+            priority = "IMPORTANT"; 
+            break;
+        default:
+            priority = "Invalid"; 
+            break;
+    }
+    const TaskDOMObject = {
+        element: "div",
+        className: ["task"],
+        attributes:{
+            "data-done":Summary.done,
+        },
+        childNodes: [
+            {
+                element: "div",
+                className: ["taskTitle"],
+                textContent: Summary.title,
+            },
+            {
+                element: "div",
+                className: ["taskDeadline"],
+                textContent: Summary.deadline,
+            },
+            {
+                element: "div",
+                className: ["taskPriority"],
+                textContent: priority,
+            },
+        ],
+    };
+    return TaskDOMObject;
+}

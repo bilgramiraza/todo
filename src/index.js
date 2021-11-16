@@ -63,7 +63,10 @@ TASKS:
                 toggleDone Button needs to change color on Status       Done
             Pick Fonts
             Select Color Scheme
-        Add CSS for If task is complete
+        Expand Task Grid with more details          Active
+            Task title:Days Remaining: Priority     Done
+            Color Coded Status                      Done
+            Add CSS for If task is complete         Done
         Dark Mode Toggle
         Add Github Link
 

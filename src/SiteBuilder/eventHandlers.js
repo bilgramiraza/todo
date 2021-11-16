@@ -36,8 +36,9 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                     ErrorDisplay("No Task Selected");
                 else{
                     toggleDone(DirDisplay.taskDone, result);
+                    buildTasks(todoList);
                     saveData(todoList);
-                }
+                }   
                 break;
             case "project":
                 todoList.updateCurrentProjectIndex(event.target.textContent);
@@ -46,8 +47,23 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 buildTasks(todoList);
                 break;
             case "task":
-                todoList.updateCurrentTaskIndex(event.target.textContent);
+                todoList.updateCurrentTaskIndex(event.target.firstChild.textContent);
                 activeTask(event.target);
+                displayTask(todoList);
+                break;
+            case "taskTitle":
+                todoList.updateCurrentTaskIndex(event.target.textContent);
+                activeTask(event.target.parentElement);
+                displayTask(todoList);
+                break;
+            case "taskDeadline":
+                todoList.updateCurrentTaskIndex(event.target.previousSibling.textContent);
+                activeTask(event.target.parentElement);
+                displayTask(todoList);
+                break;
+            case "taskPriority":
+                todoList.updateCurrentTaskIndex(event.target.previousSibling.previousSibling.textContent);
+                activeTask(event.target.parentElement);
                 displayTask(todoList);
                 break;
             case "removeProjectBtn":

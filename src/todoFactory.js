@@ -1,4 +1,4 @@
-import {format, compareAsc} from 'date-fns';
+import {format, compareAsc, formatDistanceToNow} from 'date-fns';
 class TodoTask{
     constructor(title, dueDate, priority, done, description){
         this._title = title;
@@ -80,12 +80,20 @@ class ToDoList{
         const projectTitles = this.todoList.map(task => task.project);
         return projectTitles;
     }
-    getAllTaskTitles(){
+    getAllTaskSummary(){
         if(this.currentProjectIndex === -1)
             return null;
         const projectTasks = this.todoList[this.currentProjectIndex];
-        const projectTaskTitles = projectTasks.tasks.map(task => task.title);
-        return projectTaskTitles;
+        const projectTaskSummary = projectTasks.tasks.map(task => {
+            const summary = {
+                title: task.title,
+                deadline: formatDistanceToNow(task.dueDate),
+                priority: task.priority,
+                done: task.done,
+            };
+            return summary;
+        });
+        return projectTaskSummary;
     }
     getCurrentProject(){
         if(this.currentProjectIndex === -1)

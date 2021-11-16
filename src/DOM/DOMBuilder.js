@@ -5,7 +5,7 @@ const DOMObject =
         element:"*HTMLTag*",
         class:[*Array of Strings*],
         textContent: "*Text To be Displayed*",
-        Attribute:{*AttributeName*: "value"},
+        attributes:{*AttributeName*: "value"},
         childNodes: [{DOMObject},{DOMObject},...],//Contains child elements in same format 
     };
 */

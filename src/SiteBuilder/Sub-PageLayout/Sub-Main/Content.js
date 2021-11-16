@@ -5,14 +5,14 @@ const projectTitleBar = {
     className: ["projectTitleBar"],
     textContent: "Mock Project",
 };
-const taskGrid = {
+const taskPanel = {
     element: "div",
-    className: ["taskGrid"],
+    className: ["taskPanel"],
 };
 const contentBody = {
     element: "div",
     className: ["content"],
-    childNodes: [projectTitleBar, taskGrid, taskDisplay],
+    childNodes: [projectTitleBar, taskPanel, taskDisplay],
 };
 
 export default contentBody;

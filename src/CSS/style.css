@@ -110,7 +110,7 @@ main{
     height: 10%;
     border-bottom: 0.25em solid black;
 }
-.taskGrid{
+.taskPanel{
     height: 40%;
     display: flex;
     flex-direction: column;
@@ -118,6 +118,9 @@ main{
     overflow: auto;
 }
 .task{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     min-height: 1.5rem;
     font-size: 1.25em;
     width: 99%;
@@ -127,6 +130,13 @@ main{
 }
 .task:hover{
     background-color: #A4BAB7;
+}
+.task[data-done=true]{
+    border-color: red;
+    text-decoration: line-through;
+}
+.task[data-done=false]{
+    border-color: green;
 }
 .taskDisplay{
     height: 50%;
