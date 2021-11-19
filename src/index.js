@@ -66,13 +66,14 @@ TASKS:
                 Select Font     
                 Set size        
             Form CSS Work   Done
-            Select Color Scheme
-            Re-Organize CSS
+            Select Color Scheme     Done
+            Re-Organize CSS     Active
             Warning Popup polish
         Expand Task Grid with more details          Done
             Task title:Days Remaining: Priority     
             Color Coded Status                      
-            Add CSS for If task is complete         
+            Add CSS for If task is complete      
+        Add more details to Project Title div(Title | No of Tasks Active)   
         Add Github Link             Done
 
     Dark Mode Toggle

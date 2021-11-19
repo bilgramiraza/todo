@@ -8,13 +8,13 @@
 }
 button{
     background-color: transparent;
-    border: 0.125rem dotted black;
+    border: 0.125rem dotted #6022EE;
     margin: 0.125rem;
     font-size: 1.25em;
 }
 button:hover,
 button:focus-visible{
-    background-color: #A4BAB7;
+    background-color: hsl(258, 84%, 90%);
     border-style: solid;
     cursor: pointer;
 }
@@ -34,8 +34,8 @@ header{
     align-items: center;
     height: 7%;
     padding-left: 1rem;
-    color: #080F0F;
-    background-color: #A4BAB7;
+    color: #FFFFFF;
+    background-color: hsl(258, 86%, 53%);
     font-size: 3em;
     font-weight: 700;
 }
@@ -57,7 +57,6 @@ main{
     width: 15%;
     display: flex;
     flex-direction: column;
-    /* background-color: gray; */
     border-right: 0.25em solid black;
 }
 .menuBar>div:nth-child(1){
@@ -87,29 +86,34 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    background-color: white;
 }
 .menuBarBtns>button{
     padding: min(15%, 0.25rem);
 }
 .projectList{
-    height: 80%;
+    height: 85%;
     padding-top: 1rem;
     display: flex;
     flex-direction: column;
     align-content: center;
     overflow: auto;
+    background-color: white;
 }
 .project{
     min-height: 1.5em;
     font-size: 1.25em;
     padding: 0.25rem;
     margin: 0.25rem;
-    text-align: center;
-    border: 0.25em dotted black;
     font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.25em dotted #6022EE;
 }
 .project:hover{
-    background-color: #A4BAB7;
+    background-color: hsl(258, 84%, 90%);
+    border-style: solid;
     cursor: pointer;
 }
 /* MENU SECTION */
@@ -144,10 +148,11 @@ main{
     width: 99%;
     margin: 0.25rem;
     padding: 0.125rem;
-    border: 0.25em dotted black;
+    border: 0.25em dotted #6022EE;
 }
 .task:hover{
-    background-color: #A4BAB7;
+    background-color: hsl(258, 84%, 90%);
+    border-style: solid;
     cursor: pointer;
 }
 .task[data-done=true]{
@@ -174,7 +179,7 @@ main{
 }
 .displayTaskTitle{
     width: 50%;
-    border-inline: 0.25rem solid black;
+    border-inline: 0.25rem dotted hsl(258, 86%, 53%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -193,12 +198,12 @@ main{
     justify-content: space-between;
     width: 75%;
     text-align: left;
-    border: 0.25rem solid black;
-    border-left: none;
+    border: 0.25rem solid #000;
+    border-inline: none;
 }
 .taskDescriptionBox{
     width: 49%;
-    border-right: 0.25rem solid black;
+    border-right: 0.25rem dotted hsl(258, 86%, 53%);
     padding-left: 1rem;
     font-size: 1.5rem;
 }
@@ -211,14 +216,15 @@ main{
     flex-direction: column;
     justify-content: space-around;
     width: 25%;
-    border-block: 0.25rem solid black;
+    border-block: 0.25rem solid #000000;
+    border-left: 0.25rem dotted hsl(258, 86%, 53%);
 }
 .displayTaskStats>div{
     display: flex;
     flex-direction: row;
     height: 15%;
     align-items: center;
-    border-block: 0.125rem dotted black;
+    border-block: 0.125rem dotted hsl(258, 86%, 53%);
 }
 .displayTaskStats>div>div:nth-child(1){
     width: 25%;
@@ -235,11 +241,6 @@ main{
     cursor: pointer;
     border:none;
 }
-.toggleDoneBtn:hover,
-.toggleDoneBtn:focus-visible{
-    background-color: initial;
-    border:none;
-}
 .toggleDoneBtn[data-status=true]{
     background-color: red;
     color: white;
@@ -248,8 +249,22 @@ main{
     background-color: green;
     color: white;
 }
+.toggleDoneBtn[data-status=true]:hover,
+.toggleDoneBtn[data-status=true]:focus-visible{
+    background-color: hsl(258, 84%, 90%);
+    color: red;
+    font-weight: bold;
+    border: none;
+}
+.toggleDoneBtn[data-status=false]:hover,
+.toggleDoneBtn[data-status=false]:focus-visible{
+    background-color: hsl(258, 84%, 90%);
+    color: green;
+    font-weight: bold;
+    border: none;
+}
 .active{
-    background-color: #A4BAB7;
+    background-color: hsl(258, 84%, 90%);
     border-style: solid;
 }
 /* CONTENT SECTION */
@@ -270,7 +285,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background-color: white;
+    background-color: hsl(258, 84%, 90%);
     border : 0.25em solid black;
 }
 .taskFormModal.modalBox{
@@ -282,7 +297,8 @@ main{
 legend{
     font-size: 2.5rem;
     font-weight: bolder;
-    background-color: white;
+    background-color: hsl(258, 86%, 53%);
+    color: #FFFFFF;
     border: 0.125em solid black;
 }
 .form-group{
@@ -308,9 +324,10 @@ legend{
     flex-direction: row;
     align-content: space-around;
     justify-content: center;
+    padding: 0.125em 0;
     border: 0.125em solid black;
     border-radius: 5px;
-    padding: 0.125em 0;
+    background-color: white;
 }
 .taskFormModal>.form-group>.form-item:last-child{
     width: 50%;
@@ -345,24 +362,23 @@ input[type='checkbox']{
     width:45%;
     font-size: 2em;
     cursor: pointer;
-    color: black;
     border: 0.125em solid black;
 }
 .Submit{
-    background-color: #2196F3;
+    background-color: hsl(258, 86%, 25%);
+    color:white
 }
 .Cancel{
-    background-color: #ccc;
+    background-color: hsl(258, 86%, 90%);
+    color: black;
 }
 .Submit:hover,
-.Submit:focus-visible
-{
-    background-color: #2196F3;
-}
+.Submit:focus-visible,
 .Cancel:hover,
 .Cancel:focus-visible{
-    background-color: #ccc;
+    background-color: hsl(258, 86%, 53%);
 }
+
 .hide{
     display: none;
 }
@@ -376,7 +392,7 @@ footer{
     flex-direction: row;
     justify-content: space-between;
     padding-block: 0.25rem;
-    background-color: #A4BAB7;
+    background-color: #6022EE;
 }
 footer>p{
     width: 75%;
@@ -385,7 +401,7 @@ footer>p{
     align-items: center;
     text-align: center;
     font-size: 2em;
-    color: #080F0F;
+    color: #FFFFFF;
     padding-left: 10%;
 }
 footer>a{
@@ -394,6 +410,6 @@ footer>a{
 .GithubIcon{
     width: 100%;
     height:100%;
-    content: url("../Img/GitHub-Mark-120px-plus.png");
+    content: url("../Img/GitHub-Mark-Light-120px-plus.png");
 }
 /* FOOTER SECTION */
