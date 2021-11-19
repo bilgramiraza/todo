@@ -62,15 +62,20 @@ TASKS:
                     Hovered on
                     Selected
                 toggleDone Button needs to change color on Status
-            Pick Fonts
+            Text Work          Done
+                Select Font     
+                Set size        
+            Form CSS Work   Done
             Select Color Scheme
+            Re-Organize CSS
+            Warning Popup polish
         Expand Task Grid with more details          Done
             Task title:Days Remaining: Priority     
             Color Coded Status                      
             Add CSS for If task is complete         
-        Dark Mode Toggle
-        Add Github Link
+        Add Github Link             Done
 
+    Dark Mode Toggle
     
     Setup Mobile View
         Hidden Menu Bar
@@ -82,6 +87,6 @@ TASKS:
         Add Time input and Display
 
     Bugs:
-    Can have Duplicate Projects and tasks. Need to Implement Duplicate check.
+    Can have Duplicate Projects and tasks. Need to Implement Duplicate check.   Squashed
     
 */

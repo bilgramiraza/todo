@@ -1,16 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 :root{
     box-sizing: border-box;
-    font-size: 1em;
+    font-size: medium;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
 }
 button{
     background-color: transparent;
     border: 0.125rem dotted black;
     margin: 0.125rem;
+    font-size: 1.25em;
 }
 button:hover,
 button:focus-visible{
     background-color: #A4BAB7;
     border-style: solid;
+    cursor: pointer;
 }
 body{
     width: 100vw;
@@ -25,10 +31,13 @@ header{
     display: flex;
     flex-direction: row;
     justify-content:flex-start;
+    align-items: center;
     height: 7%;
-    padding: 0.25em 1em;
+    padding-left: 1rem;
     color: #080F0F;
     background-color: #A4BAB7;
+    font-size: 3em;
+    font-weight: 700;
 }
 .headerBtnGroup{
     display: flex;
@@ -60,10 +69,12 @@ main{
 }
 .projectBtnsTitle,
 .projectListTitle{
-    border-bottom: 0.25em solid black;
+    border-bottom: 0.25rem solid black;
     width: 70%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    font-size: 2em;
 }
 .projectBtnsTitle{
     height: 20%;
@@ -82,6 +93,7 @@ main{
 }
 .projectList{
     height: 80%;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -94,9 +106,11 @@ main{
     margin: 0.25rem;
     text-align: center;
     border: 0.25em dotted black;
+    font-size: 1.5em;
 }
 .project:hover{
     background-color: #A4BAB7;
+    cursor: pointer;
 }
 /* MENU SECTION */
 
@@ -108,7 +122,11 @@ main{
 }
 .projectTitleBar{
     height: 10%;
-    border-bottom: 0.25em solid black;
+    border-bottom: 0.25rem solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
 }
 .taskPanel{
     height: 40%;
@@ -122,7 +140,7 @@ main{
     flex-direction: row;
     justify-content: space-evenly;
     min-height: 1.5rem;
-    font-size: 1.25em;
+    font-size: 1.5em;
     width: 99%;
     margin: 0.25rem;
     padding: 0.125rem;
@@ -130,6 +148,7 @@ main{
 }
 .task:hover{
     background-color: #A4BAB7;
+    cursor: pointer;
 }
 .task[data-done=true]{
     border-color: red;
@@ -155,13 +174,18 @@ main{
 }
 .displayTaskTitle{
     width: 50%;
-    border-inline: 0.25em solid black;
+    border-inline: 0.25rem solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
 }
 .displayTaskDetails{
     display: flex;
     flex-direction: row;
     height: 80%;
     width: 100%;
+    font-size: 1.5em;
 }
 .displayTaskDescription{
     display: flex;
@@ -169,15 +193,18 @@ main{
     justify-content: space-between;
     width: 75%;
     text-align: left;
-    border: 0.25em solid black;
+    border: 0.25rem solid black;
     border-left: none;
 }
 .taskDescriptionBox{
     width: 49%;
-    border-right: 0.25em solid black;
+    border-right: 0.25rem solid black;
+    padding-left: 1rem;
+    font-size: 1.5rem;
 }
 .taskDescriptionCheckbox{
     width: 49%;
+    font-size: 1.5rem;
 }
 .displayTaskStats{
     display: flex;
@@ -195,9 +222,11 @@ main{
 }
 .displayTaskStats>div>div:nth-child(1){
     width: 25%;
+    font-size: 1.25rem;
 }
 .displayTaskStats>div>div:nth-child(2){
     width: 75%;
+    font-size: 1.5rem;
 }
 .toggleDoneBtn{
     margin: 0rem;
@@ -236,29 +265,40 @@ main{
     background-color: rgba(128, 128, 128, 0.5);
 }
 .modalBox{
-    background-color: white;
+    width: 50%;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 1em;
-    height: 50%;
-    width: 50%;
+    background-color: white;
     border : 0.25em solid black;
 }
+.taskFormModal.modalBox{
+    height: 60%;
+}
+.projectFormModal.modalBox{
+    height: 40%;
+}
 legend{
-    font-size: 2em;
+    font-size: 2.5rem;
     font-weight: bolder;
     background-color: white;
     border: 0.125em solid black;
 }
 .form-group{
-    height: 80%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-content: space-between;
     justify-content: space-around;
     padding-bottom: 0.25em;
+}
+.taskFormModal>.form-group{
+    height: 80%;
+}
+.projectFormModal>.form-group{
+    height: 25%;
+    font-size: 1.75rem;
 }
 .form-item{
     min-height: 2em;
@@ -267,9 +307,14 @@ legend{
     display: flex;
     flex-direction: row;
     align-content: space-around;
+    justify-content: center;
     border: 0.125em solid black;
     border-radius: 5px;
     padding: 0.125em 0;
+}
+.taskFormModal>.form-group>.form-item:last-child{
+    width: 50%;
+    margin-inline: auto;
 }
 label{
     display: flex; 
@@ -278,18 +323,19 @@ label{
     font-size: 1.25em;
     width: 25%;
 }
-input,textarea{
+input,textarea,select{
     width:75%;
     border: none;
     font-size: 1.25em;
+    background-color: transparent;
 }
 input[type='checkbox']{
-    height: 2em;
-    width: 2em;
+    height: 70%;
+    margin-block: auto;
 }
 
 .SubmitCancel{
-    min-height: 2em;
+    min-height: 3em;
     height: 10%;
     display: flex;
     flex-direction: row;
@@ -300,11 +346,21 @@ input[type='checkbox']{
     font-size: 2em;
     cursor: pointer;
     color: black;
+    border: 0.125em solid black;
 }
 .Submit{
     background-color: #2196F3;
 }
 .Cancel{
+    background-color: #ccc;
+}
+.Submit:hover,
+.Submit:focus-visible
+{
+    background-color: #2196F3;
+}
+.Cancel:hover,
+.Cancel:focus-visible{
     background-color: #ccc;
 }
 .hide{
@@ -315,10 +371,29 @@ input[type='checkbox']{
 /* FOOTER SECTION */
 footer{
     height: 7%;
-    padding: 0.25rem;
-    text-align: center;
-    font-size: 1.5em;
-    color: #080F0F;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-block: 0.25rem;
     background-color: #A4BAB7;
+}
+footer>p{
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2em;
+    color: #080F0F;
+    padding-left: 10%;
+}
+footer>a{
+    padding-inline: 1rem;
+}
+.GithubIcon{
+    width: 100%;
+    height:100%;
+    content: url("../Img/GitHub-Mark-120px-plus.png");
 }
 /* FOOTER SECTION */
