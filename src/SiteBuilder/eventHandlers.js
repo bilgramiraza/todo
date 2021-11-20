@@ -131,11 +131,11 @@ function toggleTaskForm(DirDisplay, formTitle) {
     DirDisplay.taskForm.classList.toggle("hide");
 }
 function buildEditTaskForm(todoList, DirForm){
-    const task =todoList.getCurrentTask();
+    const task =todoList.getCurrentTaskData();
     DirForm.taskTitle.setAttribute("value", task[0]);
     DirForm.taskDueDate.setAttribute("value", task[1]);
-    DirForm.taskPriority.setAttribute("value", task[2]);
-    DirForm.taskDone.checked =task[3];
+    document.querySelector(`option[value="${task[2]}"]`).selected = true;   //Locates the Option that matches the selection 
+    DirForm.taskDone.checked =task[3];                                      //and triggers the "selected" flag on it
     DirForm.taskDiscription.value = task[4];
 }
 
@@ -145,7 +145,7 @@ function submitHandling(modalBoxClassName, DirForm, DirDisplay, todoList) {
             projectFormHandling(DirDisplay, DirForm, todoList);
             break;
     
-        case "itemFormModal modalBox":
+        case "taskFormModal modalBox":
             taskFormHandling(DirDisplay, DirForm, todoList);
             displayTask(todoList);
             break;

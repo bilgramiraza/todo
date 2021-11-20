@@ -108,6 +108,14 @@ class ToDoList{
         const targetTask = targetProject.tasks[this.currentTaskIndex];
         return targetTask.display;
     }
+    getCurrentTaskData(){
+        if(this.currentProjectIndex === -1 || this.currentTaskIndex === -1)
+        return null;
+
+        const targetProject = this.todoList[this.currentProjectIndex];
+        const targetTask = targetProject.tasks[this.currentTaskIndex];
+        return targetTask.taskData();
+    }
     getTaskDueDay(){
         if(this.currentProjectIndex === -1 || this.currentTaskIndex === -1)
             return null;

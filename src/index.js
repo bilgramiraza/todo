@@ -89,5 +89,5 @@ TASKS:
 
     Bugs:
     Can have Duplicate Projects and tasks. Need to Implement Duplicate check.   Squashed
-    
+    Priority selection in Edit tasks isn't working.         Squashed
 */
