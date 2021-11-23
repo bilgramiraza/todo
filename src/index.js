@@ -67,7 +67,7 @@ TASKS:
                 Set size        
             Form CSS Work   Done
             Select Color Scheme     Done
-            Re-Organize CSS     Active
+            Re-Organize CSS     Paused
             Warning Popup polish
         Expand Task Grid with more details          Done
             Task title:Days Remaining: Priority     
@@ -76,7 +76,7 @@ TASKS:
         Add more details to Project Title div(Title | No of Tasks Active)   
         Add Github Link             Done
 
-    Dark Mode Toggle
+    Dark Mode Toggle    Active
     
     Setup Mobile View
         Hidden Menu Bar

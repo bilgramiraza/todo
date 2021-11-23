@@ -105,6 +105,10 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 break;
         }
     });
+    const darkMode = document.querySelector(".darkModeBtnGroup>input");
+    darkMode.addEventListener("change",()=>{
+        document.body.classList.toggle("dark-mode");
+    });
 }   
 
 export default eventHandlers;

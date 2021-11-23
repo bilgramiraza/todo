@@ -5,18 +5,19 @@
     font-size: medium;
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
-}
-button{
-    background-color: transparent;
-    border: 0.125rem dotted #6022EE;
-    margin: 0.125rem;
-    font-size: 1em;
-}
-button:hover,
-button:focus-visible{
-    background-color: hsl(258, 84%, 90%);
-    border-style: solid;
-    cursor: pointer;
+    --color-primary: 258, 86%, 53%;
+    --color-primary-heavy: 258, 86%, 25%;
+    --color-primary-light: 258, 86%, 90%;
+    --color-secondary: 0, 0%, 100%;
+
+    --color-border-primary: 0, 0%, 0%;
+    --color-border-secondary:258, 86%, 53%;
+
+    --color-text-primary: 0, 0%, 0%;
+    --color-text-secondary: 0, 0%, 100%;
+
+    --color-active: 120, 86%, 25%;
+    --color-completed: 0, 86%, 50%;
 }
 body{
     width: 100vw;
@@ -24,51 +25,133 @@ body{
     display: flex;
     flex-direction: column;
     position: relative;
+    color: hsl(var(--color-text-primary));
+}
+.dark-mode{
+    --color-primary: 0, 0%, 21%;
+    --color-primary-heavy: 0, 0%, 28%;
+    --color-primary-light: 0, 0%, 14%;
+    --color-secondary: 0, 0%, 7%;
+
+    --color-border-primary: 0, 0%, 0%;
+    --color-border-secondary:258, 86%, 23%;
+
+    --color-text-primary: 0, 0%, 84%;
+    --color-text-secondary: 0, 0%, 100%;
+
+    --color-active: 120, 86%, 25%;
+    --color-completed: 0, 86%, 50%;
+}
+button{
+    background-color: transparent;
+    border: 0.125rem dotted hsl(var(--color-primary));
+    color: hsl(var(--color-text-primary));
+    margin: 0.125rem;
+    font-size: 1em;
+}
+button:hover,
+button:focus-visible{
+    background-color: hsl(var(--color-primary-light));
+    border-style: solid;
+    cursor: pointer;
 }
 
-/* MENU SECTION */
+/* Header SECTION */
 header{
     display: flex;
     flex-direction: row;
-    justify-content:flex-start;
+    justify-content: space-between;
     align-items: center;
     height: 7%;
     padding-left: 1rem;
-    color: #FFFFFF;
-    background-color: hsl(258, 86%, 53%);
+    background-color: hsl(var(--color-primary));
+}
+h1{
+    color: hsl(var(--color-text-secondary));
     font-size: 2em;
     font-weight: 700;
 }
-.headerBtnGroup{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+
+/*Credit: https://codepen.io/havardob/full/MWawKVy */
+.darkModeBtnGroup{
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    transform: scale(0.5);
 }
-/* MENU SECTION */
+.darkModeBtnGroup>label {
+	position: relative;
+	display: block;
+	width: 180px;
+	height: 100px;
+	border-radius: 100px;
+	background-color: hsl(var(--color-primary-heavy));
+	overflow: hidden;
+	cursor: pointer;
+}
+.darkModeBtnGroup>label::before,
+.darkModeBtnGroup>label::after {
+    display: block;
+    position: absolute;
+    content: "";		
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    top: 14px;
+    left: 14px;
+    transition: .5s ease;
+}
+.darkModeBtnGroup>label::before {
+    background-color: hsl(36, 100%, 55%);
+
+}
+.darkModeBtnGroup>label::after {
+    left: -58px;
+    transform: scale(0.00001);
+}
+.darkModeBtnGroup>input {
+	display: none;
+}
+.darkModeBtnGroup>input:checked + label::before {
+    background-color: hsl(0, 0%, 100%);
+    transform: translateX(80px);
+}
+.darkModeBtnGroup>input:checked + label::after {
+    transform: translateX(125px) translateY(-20px) scale(1);
+    background-color: hsl(var(--color-primary-heavy));
+}
+/* Header SECTION */
 
 /* MENU SECTION */
 main{
     display: flex;
     flex-direction: row;
     height: 84%;
-    border: 0.25em solid black;
+    border: 0.25em solid hsl(var(--color-border-primary));
+    background-color: hsl(var(--color-secondary));
+    color: hsl(var(--color-text-primary));
 }
 .menuBar{
     width: 15%;
     display: flex;
     flex-direction: column;
-    border-right: 0.25em solid black;
+    border-right: 0.25em solid hsl(var(--color-border-primary));
 }
 .menuBar>div:nth-child(1){
     height: 30%;
 }
 .menuBar>div:nth-child(2){
-    border-top: 0.25em solid black;
+    border-top: 0.25em solid hsl(var(--color-border-primary));
     height: 70%;
 }
 .projectBtnsTitle,
 .projectListTitle{
-    border-bottom: 0.25rem solid black;
+    border-bottom: 0.25rem solid hsl(var(--color-border-primary));
     width: 70%;
     display: flex;
     align-items: center;
@@ -86,7 +169,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background-color: white;
+    background-color: hsl(var(--color-secondary));
 }
 .menuBarBtns>button{
     padding: min(15%, 0.25rem);
@@ -98,7 +181,7 @@ main{
     flex-direction: column;
     align-content: center;
     overflow: auto;
-    background-color: white;
+    background-color: hsl(var(--color-secondary));
 }
 .project{
     min-height: 1.5em;
@@ -109,10 +192,10 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 0.25em dotted #6022EE;
+    border: 0.25em dotted hsl(var(--color-border-secondary));
 }
 .project:hover{
-    background-color: hsl(258, 84%, 90%);
+    background-color: hsl(var(--color-primary-light));
     border-style: solid;
     cursor: pointer;
 }
@@ -126,7 +209,7 @@ main{
 }
 .projectTitleBar{
     height: 10%;
-    border-bottom: 0.25rem solid black;
+    border-bottom: 0.25rem solid hsl(var(--color-border-primary));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -148,19 +231,19 @@ main{
     width: 99%;
     margin: 0.25rem;
     padding: 0.125rem;
-    border: 0.25em dotted #6022EE;
+    border: 0.25em dotted hsl(var(--color-border-secondary));
 }
 .task:hover{
-    background-color: hsl(258, 84%, 90%);
+    background-color: hsl(var(--color-primary-light));
     border-style: solid;
     cursor: pointer;
 }
 .task[data-done=true]{
-    border-color: red;
+    border-color:  hsl(var(--color-completed));
     text-decoration: line-through;
 }
 .task[data-done=false]{
-    border-color: green;
+    border-color: hsl(var(--color-active));
 }
 .taskDisplay{
     height: 50%;
@@ -168,7 +251,7 @@ main{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-top: 0.25em solid black;
+    border-top: 0.25em solid hsl(var(--color-border-primary));
 }
 .displayTaskHeader{
     height: 10%;
@@ -179,11 +262,12 @@ main{
 }
 .displayTaskTitle{
     width: 50%;
-    border-inline: 0.25rem dotted hsl(258, 86%, 53%);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.25em;
+    background-color: hsl(var(--color-primary-light));
+    border-inline: 0.25rem dotted hsl(var(--color-border-secondary));
 }
 .displayTaskDetails{
     display: flex;
@@ -198,12 +282,12 @@ main{
     justify-content: space-between;
     width: 75%;
     text-align: left;
-    border: 0.25rem solid #000;
+    border: 0.25rem solid hsl(var(--color-border-primary));
     border-inline: none;
 }
 .taskDescriptionBox{
     width: 49%;
-    border-right: 0.25rem dotted hsl(258, 86%, 53%);
+    border-right: 0.25rem dotted hsl(var(--color-border-secondary));
     padding-left: 1rem;
     font-size: 1rem;
 }
@@ -216,19 +300,21 @@ main{
     flex-direction: column;
     justify-content: space-around;
     width: 25%;
-    border-block: 0.25rem solid #000000;
-    border-left: 0.25rem dotted hsl(258, 86%, 53%);
+    border-block: 0.25rem solid hsl(var(--color-border-primary));
+    border-left: 0.25rem dotted  hsl(var(--color-border-secondary));
 }
 .displayTaskStats>div{
     display: flex;
     flex-direction: row;
     height: 15%;
     align-items: center;
-    border-block: 0.125rem dotted hsl(258, 86%, 53%);
+    background-color: hsl(var(--color-primary-light));
+    border-block: 0.125rem dotted hsl(var(--color-border-secondary));
 }
 .displayTaskStats>div>div:nth-child(1){
     width: 30%;
     font-size: 0.9rem;
+    font-weight: bold;
 }
 .displayTaskStats>div>div:nth-child(2){
     width: 70%;
@@ -242,29 +328,29 @@ main{
     border:none;
 }
 .toggleDoneBtn[data-status=true]{
-    background-color: red;
-    color: white;
+    background-color: hsl(var(--color-completed));
+    color: hsl(var(--color-text-secondary));
 }
 .toggleDoneBtn[data-status=false]{
-    background-color: green;
-    color: white;
+    background-color: hsl(var(--color-active));
+    color: hsl(var(--color-text-secondary));
 }
 .toggleDoneBtn[data-status=true]:hover,
 .toggleDoneBtn[data-status=true]:focus-visible{
-    background-color: hsl(258, 84%, 90%);
-    color: red;
+    background-color: hsl(var(--color-primary-light));
+    color: hsl(var(--color-completed));
     font-weight: bold;
     border: none;
 }
 .toggleDoneBtn[data-status=false]:hover,
 .toggleDoneBtn[data-status=false]:focus-visible{
-    background-color: hsl(258, 84%, 90%);
-    color: green;
+    background-color: hsl(var(--color-primary-light));
+    color: hsl(var(--color-active));
     font-weight: bold;
     border: none;
 }
 .active{
-    background-color: hsl(258, 84%, 90%);
+    background-color: hsl(var(--color-primary-light));
     border-style: solid;
 }
 /* CONTENT SECTION */
@@ -277,7 +363,7 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(128, 128, 128, 0.5);
+    background-color: hsla(0, 0%, 50%, 0.5);
 }
 .modalBox{
     width: 50%;
@@ -285,8 +371,8 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background-color: hsl(258, 84%, 90%);
-    border : 0.25em solid black;
+    background-color: hsl(var(--color-primary-light));
+    border : 0.25em solid hsl(var(--color-border-primary));
 }
 .taskFormModal.modalBox{
     height: 60%;
@@ -297,9 +383,10 @@ main{
 legend{
     font-size: 1.5rem;
     font-weight: bolder;
-    background-color: hsl(258, 86%, 53%);
-    color: #FFFFFF;
-    border: 0.125em solid black;
+    padding: 0.5rem;
+    background-color: hsl(var(--color-primary));
+    color: hsl(var(--color-text-secondary));
+    border: 0.125em solid hsl(var(--color-border-primary));
 }
 .form-group{
     width: 100%;
@@ -325,9 +412,12 @@ legend{
     align-content: space-around;
     justify-content: center;
     padding: 0.125em 0;
-    border: 0.125em solid black;
+    border: 0.125em solid hsl(var(--color-border-primary));
     border-radius: 5px;
-    background-color: white;
+    background-color: hsl(var(--color-primary-light));
+}
+.form-item:last-child{
+    background-color: hsl(var(--color-primary-light));
 }
 .taskFormModal>.form-group>.form-item:last-child{
     width: 50%;
@@ -338,13 +428,16 @@ label{
     align-items: center;
     justify-content: center;
     font-size: 1em;
+    font-weight: bold;
     width: 25%;
+    background-color: hsl(var(--color-primary-light));
 }
 input,textarea,select{
     width:75%;
     border: none;
     font-size: 1em;
-    background-color: transparent;
+    background-color: hsl(var(--color-primary));
+    color: hsl(var(--color-text-primary));
 }
 input[type='checkbox']{
     height: 70%;
@@ -357,26 +450,29 @@ input[type='checkbox']{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;  
+    align-items: center;
 }
 .SubmitCancel>button{
     width:45%;
     font-size: 1.5em;
     cursor: pointer;
-    border: 0.125em solid black;
+    padding: 0.5rem;
+    border: 0.125em solid hsl(var(--color-border-primary));
 }
 .Submit{
-    background-color: hsl(258, 86%, 25%);
-    color:white
+    background-color: hsl(var(--color-primary-heavy));
+    color: hsl(var(--color-text-secondary))
 }
 .Cancel{
-    background-color: hsl(258, 86%, 90%);
-    color: black;
+    background-color: hsl(var(--color-primary-light));
+    color: hsl(var(--color-text-primary));
 }
 .Submit:hover,
 .Submit:focus-visible,
 .Cancel:hover,
 .Cancel:focus-visible{
-    background-color: hsl(258, 86%, 53%);
+    background-color: hsl(var(--color-primary));
+    color: hsl(var(--color-text-secondary));
 }
 
 .hide{
@@ -392,7 +488,7 @@ footer{
     flex-direction: row;
     justify-content: space-between;
     padding-block: 0.25rem;
-    background-color: #6022EE;
+    background-color:  hsl(var(--color-primary));
 }
 footer>p{
     width: 75%;
@@ -401,7 +497,7 @@ footer>p{
     align-items: center;
     text-align: center;
     font-size: 1.5em;
-    color: #FFFFFF;
+    color:  hsl(var(--color-text-secondary));
     padding-left: 10%;
 }
 footer>a{
