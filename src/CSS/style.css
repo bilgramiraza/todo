@@ -1,5 +1,5 @@
+/*General Section*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
 :root{
     box-sizing: border-box;
     font-size: medium;
@@ -49,33 +49,34 @@ body{
     --color-input-text: 0, 0%, 84%;
 }
 button{
-    background-color: transparent;
-    border: 0.125rem dotted hsl(var(--color-primary));
-    color: hsl(var(--color-text-primary));
     margin: 0.125rem;
     font-size: 1em;
+    color: hsl(var(--color-text-primary));
+    background-color: transparent;
+    border: 0.125rem dotted hsl(var(--color-primary));
 }
 button:hover,
 button:focus-visible{
-    background-color: hsl(var(--color-primary-light));
-    border-style: solid;
     cursor: pointer;
+    border-style: solid;
+    background-color: hsl(var(--color-primary-light));
 }
+/*General Section*/
 
 /* Header SECTION */
 header{
+    height: 7%;
+    padding-left: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 7%;
-    padding-left: 1rem;
     background-color: hsl(var(--color-primary));
 }
 h1{
-    color: hsl(var(--color-text-secondary));
     font-size: 2em;
     font-weight: 700;
+    color: hsl(var(--color-text-secondary));
 }
 
 /*Credit: https://codepen.io/havardob/full/MWawKVy */
@@ -92,25 +93,25 @@ h1{
 }
 .darkModeBtnGroup>label {
 	position: relative;
-	display: block;
 	width: 180px;
 	height: 100px;
-	border-radius: 100px;
-	background-color: hsl(var(--color-primary-heavy));
+	display: block;
 	overflow: hidden;
 	cursor: pointer;
+	border-radius: 100px;
+	background-color: hsl(var(--color-primary-heavy));
 }
 .darkModeBtnGroup>label::before,
 .darkModeBtnGroup>label::after {
-    display: block;
-    position: absolute;
     content: "";		
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
+    position: absolute;
     top: 14px;
     left: 14px;
+    display: block;
+    width: 72px;
+    height: 72px;
     transition: .5s ease;
+    border-radius: 50%;
 }
 .darkModeBtnGroup>label::before {
     background-color: hsl(36, 100%, 55%);
@@ -124,8 +125,8 @@ h1{
 	display: none;
 }
 .darkModeBtnGroup>input:checked + label::before {
-    background-color: hsl(0, 0%, 100%);
     transform: translateX(80px);
+    background-color: hsl(0, 0%, 100%);
 }
 .darkModeBtnGroup>input:checked + label::after {
     transform: translateX(125px) translateY(-20px) scale(1);
@@ -138,31 +139,31 @@ main{
     display: flex;
     flex-direction: row;
     height: 84%;
-    border: 0.25em solid hsl(var(--color-border-primary));
-    background-color: hsl(var(--color-secondary));
     color: hsl(var(--color-text-primary));
+    background-color: hsl(var(--color-secondary));
+    border: 0.25em solid hsl(var(--color-border-primary));
 }
 .menuBar{
-    width: 15%;
     display: flex;
     flex-direction: column;
+    width: 15%;
     border-right: 0.25em solid hsl(var(--color-border-primary));
 }
 .menuBar>div:nth-child(1){
     height: 30%;
 }
 .menuBar>div:nth-child(2){
-    border-top: 0.25em solid hsl(var(--color-border-primary));
     height: 70%;
+    border-top: 0.25em solid hsl(var(--color-border-primary));
 }
 .projectBtnsTitle,
 .projectListTitle{
-    border-bottom: 0.25rem solid hsl(var(--color-border-primary));
     width: 70%;
+    font-size: 1.25em;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    font-size: 1.25em;
+    border-bottom: 0.25rem solid hsl(var(--color-border-primary));
 }
 .projectBtnsTitle{
     height: 20%;
@@ -191,7 +192,6 @@ main{
 }
 .project{
     min-height: 1.5em;
-    font-size: 1.25em;
     padding: 0.25rem;
     margin: 0.25rem;
     font-size: 1em;
@@ -201,9 +201,9 @@ main{
     border: 0.25em dotted hsl(var(--color-border-secondary));
 }
 .project:hover{
-    background-color: hsl(var(--color-primary-light));
-    border-style: solid;
     cursor: pointer;
+    border-style: solid;
+    background-color: hsl(var(--color-primary-light));
 }
 /* MENU SECTION */
 
@@ -215,11 +215,11 @@ main{
 }
 .projectTitleBar{
     height: 10%;
-    border-bottom: 0.25rem solid hsl(var(--color-border-primary));
+    font-size: 1.5em;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
+    border-bottom: 0.25rem solid hsl(var(--color-border-primary));
 }
 .taskPanel{
     height: 40%;
@@ -229,24 +229,24 @@ main{
     overflow: auto;
 }
 .task{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
     min-height: 1.5rem;
-    font-size: 1em;
     width: 99%;
     margin: 0.25rem;
     padding: 0.125rem;
+    font-size: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     border: 0.25em dotted hsl(var(--color-border-secondary));
 }
 .task:hover{
-    background-color: hsl(var(--color-primary-light));
-    border-style: solid;
     cursor: pointer;
+    border-style: solid;
+    background-color: hsl(var(--color-primary-light));
 }
 .task[data-done=true]{
-    border-color:  hsl(var(--color-completed));
     text-decoration: line-through;
+    border-color:  hsl(var(--color-completed));
 }
 .task[data-done=false]{
     border-color: hsl(var(--color-active));
@@ -268,51 +268,50 @@ main{
 }
 .displayTaskTitle{
     width: 50%;
+    font-size: 1.25em;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.25em;
     background-color: hsl(var(--color-primary-light));
     border-inline: 0.25rem dotted hsl(var(--color-border-secondary));
 }
 .displayTaskDetails{
-    display: flex;
-    flex-direction: row;
     height: 80%;
     width: 100%;
     font-size: 1em;
+    display: flex;
+    flex-direction: row;
 }
 .displayTaskDescription{
+    width: 75%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 75%;
     text-align: left;
-    border: 0.25rem solid hsl(var(--color-border-primary));
-    border-inline: none;
+    border-block: 0.25rem solid hsl(var(--color-border-primary));
 }
 .taskDescriptionBox{
     width: 49%;
-    border-right: 0.25rem dotted hsl(var(--color-border-secondary));
     padding-left: 1rem;
     font-size: 1rem;
+    border-right: 0.25rem dotted hsl(var(--color-border-secondary));
 }
 .taskDescriptionCheckbox{
     width: 49%;
     font-size: 1rem;
 }
 .displayTaskStats{
+    width: 25%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 25%;
     border-block: 0.25rem solid hsl(var(--color-border-primary));
     border-left: 0.25rem dotted  hsl(var(--color-border-secondary));
 }
 .displayTaskStats>div{
+    height: 15%;
     display: flex;
     flex-direction: row;
-    height: 15%;
     align-items: center;
     background-color: hsl(var(--color-primary-light));
     border-block: 0.125rem dotted hsl(var(--color-border-secondary));
@@ -327,32 +326,32 @@ main{
     font-size: 1rem;
 }
 .toggleDoneBtn{
-    margin: 0rem;
     height: 10%;
     width: 100%;
+    margin: 0rem;
     cursor: pointer;
     border:none;
 }
 .toggleDoneBtn[data-status=true]{
-    background-color: hsl(var(--color-completed));
     color: hsl(var(--color-text-secondary));
+    background-color: hsl(var(--color-completed));
 }
 .toggleDoneBtn[data-status=false]{
-    background-color: hsl(var(--color-active));
     color: hsl(var(--color-text-secondary));
+    background-color: hsl(var(--color-active));
 }
 .toggleDoneBtn[data-status=true]:hover,
 .toggleDoneBtn[data-status=true]:focus-visible{
-    background-color: hsl(var(--color-primary-light));
-    color: hsl(var(--color-completed));
     font-weight: bold;
+    color: hsl(var(--color-completed));
+    background-color: hsl(var(--color-primary-light));
     border: none;
 }
 .toggleDoneBtn[data-status=false]:hover,
 .toggleDoneBtn[data-status=false]:focus-visible{
+    font-weight: bold;
     background-color: hsl(var(--color-primary-light));
     color: hsl(var(--color-active));
-    font-weight: bold;
     border: none;
 }
 .active{
@@ -390,17 +389,17 @@ legend{
     font-size: 1.5rem;
     font-weight: bolder;
     padding: 0.5rem;
-    background-color: hsl(var(--color-primary));
     color: hsl(var(--color-text-secondary));
+    background-color: hsl(var(--color-primary));
     border: 0.125em solid hsl(var(--color-border-primary));
 }
 .form-group{
     width: 100%;
+    padding-bottom: 0.25em;
     display: flex;
     flex-direction: column;
     align-content: space-between;
     justify-content: space-around;
-    padding-bottom: 0.25em;
 }
 .taskFormModal>.form-group{
     height: 80%;
@@ -413,14 +412,14 @@ legend{
     min-height: 1.5em;
     height: 20%;
     width: 100%;
+    padding: 0.125em 0;
     display: flex;
     flex-direction: row;
     align-content: space-around;
     justify-content: center;
-    padding: 0.125em 0;
+    background-color: hsl(var(--color-primary-light));
     border: 0.125em solid hsl(var(--color-border-primary));
     border-radius: 5px;
-    background-color: hsl(var(--color-primary-light));
 }
 .form-item:last-child{
     background-color: hsl(var(--color-primary-light));
@@ -430,26 +429,25 @@ legend{
     margin-inline: auto;
 }
 label{
+    width: 25%;
+    font-size: 1em;
     display: flex; 
     align-items: center;
     justify-content: center;
-    font-size: 1em;
     font-weight: bold;
-    width: 25%;
     background-color: hsl(var(--color-primary-light));
 }
 input,textarea,select{
     width:75%;
-    border: none;
     font-size: 1em;
-    background-color: hsl(var(--color-input-bg));
     color: hsl(var(--color-input-text));
+    background-color: hsl(var(--color-input-bg));
+    border: none;
 }
 input[type='checkbox']{
     height: 70%;
     margin-block: auto;
 }
-
 .SubmitCancel{
     min-height: 2em;
     height: 10%;
@@ -460,25 +458,25 @@ input[type='checkbox']{
 }
 .SubmitCancel>button{
     width:45%;
+    padding: 0.5rem;
     font-size: 1.5em;
     cursor: pointer;
-    padding: 0.5rem;
     border: 0.125em solid hsl(var(--color-border-primary));
 }
 .Submit{
+    color: hsl(var(--color-text-secondary));
     background-color: hsl(var(--color-primary-heavy));
-    color: hsl(var(--color-text-secondary))
 }
 .Cancel{
-    background-color: hsl(var(--color-primary-light));
     color: hsl(var(--color-text-primary));
+    background-color: hsl(var(--color-primary-light));
 }
 .Submit:hover,
 .Submit:focus-visible,
 .Cancel:hover,
 .Cancel:focus-visible{
-    background-color: hsl(var(--color-primary));
     color: hsl(var(--color-text-secondary));
+    background-color: hsl(var(--color-primary));
 }
 
 .hide{
@@ -490,21 +488,21 @@ input[type='checkbox']{
 footer{
     height: 7%;
     width: 100%;
+    padding-block: 0.25rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-block: 0.25rem;
     background-color:  hsl(var(--color-primary));
 }
 footer>p{
     width: 75%;
+    padding-left: 10%;
+    font-size: 1.5em;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.5em;
     color:  hsl(var(--color-text-secondary));
-    padding-left: 10%;
 }
 footer>a{
     padding-inline: 1rem;

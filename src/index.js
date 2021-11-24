@@ -51,32 +51,32 @@ TASKS:
         Display             Done
             day of Due Date
             No of Days to Due Date
-        CSS Cleanup     Active
-            Convert from outlines to borders    Done
-            Setup Spacing between elements  Done    
-            Finalize Form Layout and types  Done
-            Relocate Buttons        Done
-            Setup Pretty buttons    Done
+        CSS Cleanup     Done
+            Convert from outlines to borders
+            Setup Spacing between elements    
+            Finalize Form Layout and types
+            Relocate Buttons
+            Setup Pretty buttons
                 Add Borders to buttons
                 List Divs(Project List & Task List) change CSS when
                     Hovered on
                     Selected
                 toggleDone Button needs to change color on Status
-            Text Work          Done
+            Text Work
                 Select Font     
                 Set size        
-            Form CSS Work   Done
-            Select Color Scheme     Done
-            Re-Organize CSS     Paused
+            Form CSS Work
+            Select Color Scheme
+            Re-Organize CSS
             Warning Popup polish
         Expand Task Grid with more details          Done
             Task title:Days Remaining: Priority     
             Color Coded Status                      
-            Add CSS for If task is complete      
-        Add more details to Project Title div(Title | No of Tasks Active)   
+            Add CSS for If task is complete
         Add Github Link             Done
+        Add more details to Project Title div(Title | No of Tasks Active)   Active  
 
-    Dark Mode Toggle    Active
+    Dark Mode Toggle    Done
     
     Setup Mobile View
         Hidden Menu Bar
