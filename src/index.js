@@ -74,7 +74,12 @@ TASKS:
             Color Coded Status                      
             Add CSS for If task is complete
         Add Github Link             Done
-        Add more details to Project Title div(Title | No of Tasks Active)   Active  
+        Add more details to Project Title div(Title | No of Tasks Active)     Done
+            Set the two labels under same CSS Name
+            Updates when tasks are modified
+        On Page load        
+            Should auto-select the first Project and First Task
+        Switching between Projects should update the Display Tasks Panel
 
     Dark Mode Toggle    Done
     

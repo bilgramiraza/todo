@@ -130,6 +130,21 @@ class ToDoList{
         const targetTask = targetProject.tasks[this.currentTaskIndex];
         return formatDistanceToNow(targetTask.dueDate);
     }
+    getCurrentProjectActiveTasksCount(){
+        if(this.currentProjectIndex === -1)
+            return null;
+        const targetProject = this.todoList[this.currentProjectIndex];
+        if(!(targetProject.tasks.length))
+            return 0;
+        const activeTaskCount = targetProject.tasks.reduce((PV,CV) => CV.done?PV:PV+1,0);
+        return activeTaskCount;
+    }
+    getCurrentProjectTasksCount(){
+        if(this.currentProjectIndex === -1)
+            return null;
+        const targetProject = this.todoList[this.currentProjectIndex];
+        return targetProject.tasks.length;
+    }
     removeCurrentTask(){
         if(this.currentProjectIndex === -1 || this.currentTaskIndex === -1)
             return null;

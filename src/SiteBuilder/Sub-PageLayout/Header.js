@@ -1,6 +1,6 @@
 const pageTitle = {
     element: "h1",
-    textContent: "TODO TRACKING",
+    textContent: "TODO TRACKER",
 };
 const darkModeToggleInput = {
     element: "input",

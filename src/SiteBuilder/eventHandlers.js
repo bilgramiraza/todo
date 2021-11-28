@@ -36,7 +36,7 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                     ErrorDisplay("No Task Selected");
                 else{
                     toggleDone(DirDisplay.taskDone, result);
-                    buildTasks(todoList);
+                    buildTasks(DirDisplay, todoList);
                     saveData(todoList);
                 }   
                 break;
@@ -44,7 +44,7 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 todoList.updateCurrentProjectIndex(event.target.textContent);
                 DirForm.currentProject.textContent = todoList.getCurrentProject();
                 activeProject(event.target);
-                buildTasks(todoList);
+                buildTasks(DirDisplay, todoList);
                 break;
             case "task":
                 todoList.updateCurrentTaskIndex(event.target.firstChild.textContent);
@@ -79,14 +79,14 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                     saveData(todoList);
                 }
                 buildProjects(todoList);
-                buildTasks(todoList);
+                buildTasks(DirDisplay, todoList);
                 break;
             case "removeTaskBtn":
                 check = todoList.removeCurrentTask();
                 if(check === null)
                     ErrorDisplay("Deletion Cancelled");
                 else{
-                    buildTasks(todoList);
+                    buildTasks(DirDisplay, todoList);
                     saveData(todoList);
                 }
                 break;
@@ -156,7 +156,7 @@ function submitHandling(modalBoxClassName, DirForm, DirDisplay, todoList) {
     }
     clearFormModal(DirDisplay);
     buildProjects(todoList);
-    buildTasks(todoList);
+    buildTasks(DirDisplay, todoList);
     saveData(todoList);
 }
 function projectFormHandling(DirDisplay, DirForm, todoList) {

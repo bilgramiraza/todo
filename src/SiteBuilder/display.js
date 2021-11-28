@@ -26,7 +26,7 @@ const buildProjects = (todoList)=>{
         });
 };
 
-const buildTasks = (todoList)=>{
+const buildTasks = (DirDisplay, todoList)=>{
     const taskSummary = todoList.getAllTaskSummary();
     const taskList = document.querySelector(".taskPanel");
     if(taskList.children)
@@ -36,6 +36,8 @@ const buildTasks = (todoList)=>{
             const taskDom = taskDOMFactory(taskSummary)
             DOMBuilder(taskDom, taskList);
         });
+    DirDisplay.totalTasks.textContent = todoList.getCurrentProjectTasksCount();
+    DirDisplay.activeTasks.textContent = todoList.getCurrentProjectActiveTasksCount();
 };
 
 const displayTask = (todoList)=>{
