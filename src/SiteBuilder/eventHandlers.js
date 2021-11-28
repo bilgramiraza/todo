@@ -45,6 +45,10 @@ function eventHandlers(todoList, DirForm, DirDisplay) {
                 DirForm.currentProject.textContent = todoList.getCurrentProject();
                 activeProject(event.target);
                 buildTasks(DirDisplay, todoList);
+                if(document.querySelector(".task")){
+                    activeTask(document.querySelector(".task"));
+                    displayTask(todoList);
+                }
                 break;
             case "task":
                 todoList.updateCurrentTaskIndex(event.target.firstChild.textContent);

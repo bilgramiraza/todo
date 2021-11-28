@@ -88,8 +88,7 @@ TASKS:
             Updates when tasks are modified        
         Should auto-select the first Project and First Task     Done
             on First Page Load
-
-        Switching between Projects should update the Display Tasks Panel
+        Switching between Projects should update the Display Tasks Panel    Done
 
     Dark Mode Toggle    Done
     
