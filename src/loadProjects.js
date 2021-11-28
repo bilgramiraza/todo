@@ -12,6 +12,7 @@ function loadProjects() {
     }
     else                                    
         loadDummyData(todoList);
+    todoList.initialize();
     return todoList;
 }
 function saveData(todoList) {

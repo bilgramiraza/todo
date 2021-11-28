@@ -1,7 +1,7 @@
 import './CSS/reset.css';
 import './CSS/style.css';
 import {loadProjects} from './loadProjects';
-import {basePageBuilder, buildProjects, displayTask} from "./SiteBuilder/display";
+import {basePageBuilder, buildProjects, buildTasks, displayTask} from "./SiteBuilder/display";
 import { DirectoryForm, DirectoryDisplay } from './DOM/DOMDirectory';
 import eventHandlers from './SiteBuilder/eventHandlers';
 import {buildErrorDOM} from './ErrorHandling/errorHandling';
@@ -11,8 +11,17 @@ buildErrorDOM();
 let todoList = loadProjects();
 const DirForm = DirectoryForm();
 const DirDisplay = DirectoryDisplay();
-eventHandlers(todoList,DirForm,DirDisplay);
+DirForm.currentProject.textContent = todoList.getCurrentProject();
+eventHandlers(todoList, DirForm, DirDisplay);
 buildProjects(todoList);
+const firstProject = document.querySelector(".project");
+firstProject.classList.toggle("active");
+
+buildTasks(DirDisplay, todoList);
+const firstTask = document.querySelector(".task");
+if(firstTask)
+    firstTask.classList.toggle("active");
+
 displayTask(todoList);
 /*
 
@@ -76,9 +85,10 @@ TASKS:
         Add Github Link             Done
         Add more details to Project Title div(Title | No of Tasks Active)     Done
             Set the two labels under same CSS Name
-            Updates when tasks are modified
-        On Page load        
-            Should auto-select the first Project and First Task
+            Updates when tasks are modified        
+        Should auto-select the first Project and First Task     Done
+            on First Page Load
+
         Switching between Projects should update the Display Tasks Panel
 
     Dark Mode Toggle    Done

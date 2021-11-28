@@ -53,6 +53,14 @@ class ToDoList{
         const targetTaskIndex = targetTask.tasks.findIndex((task)=> task.title === value);
         return targetTaskIndex;
     }
+    
+    initialize(){
+        this.currentProjectIndex = 0;
+        if(this.todoList[this.currentProjectIndex].tasks.length)   
+            this.currentTaskIndex = 0;
+        else 
+            this.currentTaskIndex = -1;
+    }
 
     newTodoProject(value){
         if(this.#locateProject(value) !== -1)
