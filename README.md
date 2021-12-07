@@ -32,8 +32,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![todo Webpage Screenshot](https://raw.githubusercontent.com/bilgramiraza/todo/Images/WebPageLight.png)
-![todo Webpage Screenshot](https://raw.githubusercontent.com/bilgramiraza/todo/Images/WebPageDark.png)
+![todo Webpage Screenshot](https://raw.githubusercontent.com/bilgramiraza/todo/main/Images/WebPageLight.png)
+![todo Webpage Screenshot](https://raw.githubusercontent.com/bilgramiraza/todo/main/Images/WebPageDark.png)
 
 This website's purpose is to act as an online Planner to help the user keep track of their tasks.
 
